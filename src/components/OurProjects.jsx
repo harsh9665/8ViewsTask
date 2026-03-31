@@ -4,43 +4,20 @@ import { useState } from 'react';
 import ProjectCard from '@/components/ProjectCard';
 import Button from '@/components/Button';
 import styles from '@/styles/OurProjects.module.css';
-
-const projects = [
-  {
-    id: 1,
-    image: '/images/project1.png',
-    name: "LA'PALOMA",
-    type: 'Luxury Villas',
-    badge: 'COMPLETED PROJECT',
-  },
-  {
-    id: 2,
-    image: '/images/project2.png',
-    name: 'SKYILA',
-    type: 'Luxury Apartments',
-    badge: 'COMPLETED PROJECT',
-  },
-  {
-    id: 3,
-    image: '/images/project3.png',
-    name: 'RIVER EDGE',
-    type: 'Residential',
-    badge: 'COMPLETED PROJECT', 
-  },
-];
+import { ourProjects } from '@/data/siteData';
 
 export default function OurProjects() {
   const [startIndex, setStartIndex] = useState(0);
 
   const prev = () =>
-    setStartIndex((i) => (i === 0 ? projects.length - 1 : i - 1));
+    setStartIndex((i) => (i === 0 ? ourProjects.length - 1 : i - 1));
   const next = () =>
-    setStartIndex((i) => (i === projects.length - 1 ? 0 : i + 1));
+    setStartIndex((i) => (i === ourProjects.length - 1 ? 0 : i + 1));
 
   // Show 2 cards starting from startIndex, wrapping around
   const visibleProjects = [
-    projects[startIndex],
-    projects[(startIndex + 1) % projects.length],
+    ourProjects[startIndex],
+    ourProjects[(startIndex + 1) % ourProjects.length],
   ];
 
   return (

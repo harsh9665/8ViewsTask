@@ -1,6 +1,7 @@
 'use client';
 
-import styles from '../styles/Hero.module.css';
+import Button from '@/components/Button';
+import styles from '@/styles/Hero.module.css';
 
 export default function Hero({ onExploreClick, onLetsTalkClick }) {
   return (
@@ -19,7 +20,7 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
       </video>
 
       {/* Gradient Overlay */}
-      <div className={styles.overlay}></div>
+      <div className={styles.overlay} />
 
       {/* Hero Content */}
       <div className={styles.content}>
@@ -29,18 +30,12 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
         </h1>
 
         <div className={styles.buttons}>
-          <button
-            className={styles.btnOutline}
-            onClick={onExploreClick}
-          >
+          <Button variant="outline" size="md" onClick={onExploreClick}>
             EXPLORE PROJECTS
-          </button>
-          <button
-            className={styles.btnFilled}
-            onClick={onLetsTalkClick}
-          >
+          </Button>
+          <Button variant="solid" size="md" onClick={onLetsTalkClick}>
             LET&apos;S TALK
-          </button>
+          </Button>
         </div>
       </div>
 

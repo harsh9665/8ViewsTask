@@ -1,10 +1,5 @@
+import { stats } from '@/data/siteData';
 import styles from '@/styles/StatsSection.module.css';
-
-const stats = [
-  { number: '20+',   label: 'Years of Experience' },
-  { number: '1500+', label: 'Satisfied Home Owners' },
-  { number: '30+',   label: 'Projects Completed' },
-];
 
 export default function StatsSection() {
   return (

@@ -1,31 +1,7 @@
 import Image from 'next/image';
 import logo from '@/constants/logo.png';
 import styles from '@/styles/NewsUpdates.module.css';
-
-// ── Static news data (replace with DB/API later) ──
-const news = [
-  {
-    id: 1,
-    image: '/images/news&updates1.png',
-    project: 'River Edge',
-    date: '01.08.2025',
-    title: 'The Future of Urban Living: Trends in Real Estate Development',
-  },
-  {
-    id: 2,
-    image: '/images/news&updates2.png',
-    project: "La'Paloma",
-    date: '01.06.2024',
-    title: 'Building Your Dream Home: How E-Infra Delivers Luxury Villas',
-  },
-  {
-    id: 3,
-    image: '/images/news&updates3.png',
-    project: 'River Edge',
-    date: '01.24.2027',
-    title: 'How to Choose the Perfect Commercial Space for Your Business',
-  },
-];
+import { newsItems } from '@/data/siteData';
 
 export default function NewsUpdates() {
   return (
@@ -40,7 +16,7 @@ export default function NewsUpdates() {
 
         {/* ── Cards Row ── */}
         <div className={styles.cardsRow}>
-          {news.map((item) => (
+          {newsItems.map((item) => (
             <article key={item.id} className={styles.card}>
 
               {/* Image with hover overlay */}

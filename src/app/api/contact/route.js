@@ -5,7 +5,7 @@ export async function POST(req) {
     console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
     try {
         const body = await req.json();
-        const { fullName, email, mobile, message } = body;
+        const { fullName, email, mobile, message, source} = body;
 
         // ── Basic validation ──
         if (!fullName || !email || !mobile) {
@@ -35,7 +35,7 @@ export async function POST(req) {
         await connectDB();
         console.log('✅ DB connected — saving contact...');
 
-        await Contact.create({ fullName, email, mobile, message });
+        await Contact.create({ fullName, email, mobile, message, source: source || 'contact_section' });
         console.log('✅ Contact saved successfully:', { fullName, email, mobile });
 
         return Response.json(

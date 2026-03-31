@@ -3,33 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import styles from '@/styles/OurServices.module.css';
-
-const services = [
-  {
-    id: 1,
-    title: 'High-Rise Apartments',
-    description:
-      'Modern living with panoramic views. Our high-rise projects are designed with a focus on luxury, convenience, and sustainability.',
-  },
-  {
-    id: 2,
-    title: 'Luxury Villas',
-    description:
-      'We specialize in creating exclusive, spacious luxury villas that provide unparalleled comfort, privacy, and elegance, tailored to your lifestyle.',
-  },
-  {
-    id: 3,
-    title: 'Commercial Spaces',
-    description:
-      'Our commercial spaces are designed to foster productivity and innovation, with a focus on functionality, sophistication, and the needs of modern businesses.',
-  },
-  {
-    id: 4,
-    title: 'Open Plots',
-    description:
-      'Prime locations for investment or personal development. Our open plots offer the freedom to create your ideal space.',
-  },
-];
+import { services } from '@/data/siteData';
 
 export default function OurServices() {
   const [hovered, setHovered] = useState(null);
