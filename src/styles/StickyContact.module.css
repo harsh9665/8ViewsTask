@@ -1,0 +1,48 @@
+.stickyContact {
+  /* Fixed to right edge, vertically centered */
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center center;
+
+  /* Size from Figma: 57px wide, hugs height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+
+  /* Styling */
+  background-color: transparent;
+  border: 1px solid #C9A84C;
+  text-decoration: none;
+  z-index: 999;
+
+  /* Smooth hover */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.stickyContact:hover {
+  background-color: #C9A84C;
+}
+
+.stickyContact:hover .label {
+  color: #ffffff;
+}
+
+.label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #C9A84C;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Hide on small screens to avoid overlap */
+@media (max-width: 480px) {
+  .stickyContact {
+    display: none;
+  }
+}

@@ -1,0 +1,192 @@
+.section {
+  width: 100%;
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+  padding: 120px 250px;
+}
+
+/* ── Inner container ── */
+.inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1420px;
+  gap: 48px;
+}
+
+/* ── Header row ── */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  color: #212121;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.viewAll {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #C9A84C;
+  background: transparent;
+  border: 1px solid #C9A84C;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.viewAll:hover {
+  background-color: #C9A84C;
+  color: #fff;
+}
+
+/* ── Cards row ── */
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Single card ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+}
+
+/* ── Image wrapper ── */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+/* ─────────────────────────────────────────
+   OVERLAY — dark bg + logo, left-to-right reveal
+───────────────────────────────────────── */
+
+/* Dark overlay base — clips from left */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(20, 20, 20, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  /* Clip: hidden (width 0) → visible (width 100%) */
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.card:hover .overlay {
+  clip-path: inset(0 0% 0 0); /* fully revealed */
+}
+
+/* Logo inside overlay */
+.overlayLogo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+
+.card:hover .overlayLogo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logoIcon {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #C9A84C;
+  line-height: 1;
+}
+
+.logoText {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* ── Card text ── */
+.cardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.projectDate {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #888888;
+  letter-spacing: 0.04em;
+}
+
+.cardTitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #212121;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1280px) {
+  .section {
+    padding: 80px 80px;
+  }
+  .title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 60px 48px;
+  }
+  .cardsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 48px 24px;
+  }
+  .cardsRow {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    font-size: 28px;
+  }
+}

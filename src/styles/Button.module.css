@@ -1,0 +1,76 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, transform 0.1s ease;
+  white-space: nowrap;
+  border: none;
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Variants ── */
+.outline {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.outline:hover {
+  background: #ffffff;
+  color: #212121;
+}
+
+.outlineGold {
+  background: transparent;
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
+}
+.outlineGold:hover {
+  background: #C9A84C;
+  color: #ffffff;
+}
+
+.solid {
+  background: #C9A84C;
+  border: 1px solid #C9A84C;
+  color: #ffffff;
+}
+.solid:hover {
+  background: #a87200;
+  border-color: #a87200;
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #ffffff;
+}
+.ghost:hover {
+  border-color: #ffffff;
+}
+
+/* ── Sizes ── */
+.sm {
+  font-size: 11px;
+  padding: 10px 20px;
+}
+
+.md {
+  font-size: 12px;
+  padding: 14px 32px;
+}
+
+.lg {
+  font-size: 14px;
+  padding: 18px 48px;
+}

@@ -1,0 +1,95 @@
+.quoteSection {
+  background-color: #FAF7F0;
+  width: 100%;
+  padding: 80px 120px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 80px;
+  max-width: 1200px;
+}
+
+/* Big decorative quote marks on the left */
+.quoteMark {
+  font-size: 80px;
+  line-height: 1;
+  color: #212121;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-top: -10px;
+  flex-shrink: 0;
+  letter-spacing: -4px;
+}
+
+/* Right side: text + brand */
+.quoteContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.quoteText {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #212121;
+  margin: 0;
+}
+
+/* E-INFRA label row */
+.brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+
+.brandDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #C9A84C; /* golden/amber */
+  flex-shrink: 0;
+}
+
+.brandName {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #C9A84C;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .quoteSection {
+    padding: 60px 60px;
+  }
+  .quoteText {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quoteSection {
+    padding: 48px 24px;
+  }
+  .inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .quoteMark {
+    font-size: 56px;
+  }
+  .quoteText {
+    font-size: 28px;
+  }
+}

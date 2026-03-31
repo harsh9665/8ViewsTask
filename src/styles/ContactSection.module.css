@@ -1,0 +1,171 @@
+.section {
+  width: 100%;
+  min-height: 912px;
+  background-color: #FFF8EF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 180px 250px;
+}
+
+/* ── Inner two-column layout ── */
+.inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1420px;
+  gap: 20px;
+}
+
+/* ── Left Column — Heading ── */
+.leftCol {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8px;
+}
+
+.heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1.1;
+  color: #212121;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* ── Right Column — Form ── */
+.rightCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ── Input / Textarea shared styles ── */
+.input {
+  width: 100%;
+  height: 64px;
+  background-color: #F9F9F9;
+  border: 1px solid #EAD6AA;
+  padding: 10px 32px;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #212121;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 0; /* sharp corners matching design */
+}
+
+.input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.input:focus {
+  border-color: #C78800;
+  box-shadow: 0 0 0 2px rgba(199, 136, 0, 0.12);
+}
+
+/* Textarea overrides */
+.textarea {
+  height: auto;
+  min-height: 120px;
+  resize: vertical;
+  padding-top: 16px;
+  line-height: 1.5;
+}
+
+/* ── Submit Button ── */
+.submitBtn {
+  width: 160px;
+  height: 56px;
+  background-color: #C78800;
+  border: none;
+  padding: 0 24px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  border-radius: 0;
+  margin-top: 4px;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background-color: #a87200;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+/* ── Status messages ── */
+.successMsg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: #2e7d32;
+  margin: 8px 0 0;
+}
+
+.errorMsg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: #c62828;
+  margin: 8px 0 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1280px) {
+  .section {
+    padding: 100px 80px;
+  }
+  .heading {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 48px;
+    min-height: auto;
+  }
+  .inner {
+    gap: 48px;
+  }
+  .heading {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 24px;
+  }
+  .inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .heading {
+    font-size: 32px;
+    max-width: 100%;
+  }
+  .submitBtn {
+    width: 100%;
+  }
+}
