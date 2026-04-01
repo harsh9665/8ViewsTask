@@ -2,6 +2,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import StickyContact from '@/components/StickyContact';
 import { connectDB } from '@/lib/mongodb';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],

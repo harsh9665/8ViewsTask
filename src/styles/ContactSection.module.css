@@ -1,21 +1,20 @@
 .section {
-  width: 100%;
   min-height: 912px;
   background-color: #FFF8EF;
+  box-sizing: border-box;
+  padding: 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  padding: 180px 250px;
+  overflow: hidden;
 }
 
 .inner {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 100%;
-  max-width: 1420px;
   gap: 20px;
+  align-items: center;
 }
 
 .leftCol {
@@ -30,7 +29,6 @@
   line-height: 1.1;
   color: #212121;
   margin: 0;
-  max-width: 420px;
 }
 
 .rightCol {

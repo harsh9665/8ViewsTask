@@ -10,6 +10,7 @@ export default function OurServices() {
 
   return (
     <section className={styles.section}>
+      <div className={styles.container + ' container'}>
 
       {/* ── Title ── */}
       <h2 className={styles.title}>OUR SERVICES</h2>
@@ -52,14 +53,10 @@ export default function OurServices() {
 
             </div>
 
-            {/* Divider line bottom (only for last item) */}
-            {idx === services.length - 1 && (
-              <div className={styles.divider} />
-            )}
           </div>
         ))}
       </div>
-
+</div>
     </section>
   );
 }

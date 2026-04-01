@@ -3,6 +3,7 @@
   background-color: #f8f8f8;
   overflow: hidden; /* clips the image sliding in from right */
   box-sizing: border-box;
+  padding: 80px 0;
 }
 
 /* ── Two column layout ── */
@@ -13,16 +14,15 @@
   justify-content: space-between;
   width: 100%;
   min-height: 720px;
+  gap: 20
 }
 
 /* ── Left column ── */
 .leftCol {
   flex-shrink: 0;
-  width: 580px;
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 80px 0 80px 250px;
   box-sizing: border-box;
 }
 

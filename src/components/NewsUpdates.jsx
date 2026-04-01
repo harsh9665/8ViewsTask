@@ -6,7 +6,7 @@ import { newsItems } from '@/data/siteData';
 export default function NewsUpdates() {
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
+      <div className={styles.inner + ' container'}>
 
         {/* ── Header Row ── */}
         <div className={styles.header}>

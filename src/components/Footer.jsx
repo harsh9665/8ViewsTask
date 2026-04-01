@@ -9,7 +9,7 @@ export default function Footer() {
         <footer className={styles.footer}>
 
             {/* ── Main Footer Body ── */}
-            <div className={styles.body}>
+            <div className={styles.body + ' container'}>
 
                 {/* Col 1 — Logo */}
                 <div className={styles.logoCol}>
@@ -22,7 +22,8 @@ export default function Footer() {
                     />
                 </div>
 
-                {/* Col 2 — Nav Links */}
+                <div className='d-flex flex-wrap gap-0 gap-sm-5'>
+ {/* Col 2 — Nav Links */}
                 <nav className={styles.navCol}>
                     {navLinks.map((link) => (
                         <a key={link}
@@ -33,8 +34,7 @@ export default function Footer() {
                         </a>
                     ))}
                 </nav>
-
-                {/* Col 3 — Address & Contact */}
+                 {/* Col 3 — Address & Contact */}
                 <div className={styles.contactCol}>
                     <p className={styles.address}>
                         Plot No:32, Sy No:135, Brindavan Colony Gandipet road, RR Dist,
@@ -48,8 +48,7 @@ export default function Footer() {
                         +91-897466XXXX
                     </a>
                 </div>
-
-                {/* Col 4 — Social */}
+                 {/* Col 4 — Social */}
                 <div className={styles.socialCol}>
                     <span className={styles.followText}>Follow us on</span>
                     <a href="#" className={styles.socialLink}>
@@ -59,6 +58,12 @@ export default function Footer() {
                         Linkedin <span className={styles.arrow}>↗</span>
                     </a>
                 </div>
+                </div>
+               
+
+               
+
+               
 
             </div>
 

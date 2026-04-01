@@ -4,13 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 250px;
+  padding: 80px 0;
   box-sizing: border-box;
 }
 
 .videoWrapper {
   width: 100%;
-  max-width: 1420px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   position: relative;

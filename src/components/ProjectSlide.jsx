@@ -51,8 +51,9 @@ export default function ProjectSlide({
       <div className={styles.topBorder} />
 
       {/* Content */}
-      <div className={styles.content}>
-        <span className={styles.label}>{label}</span>
+      <div className='container z-3'>
+        <div className={styles.content}>
+<span className={styles.label}>{label}</span>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.description}>{description}</p>
 
@@ -68,6 +69,8 @@ export default function ProjectSlide({
         <Button variant="outline" size="md" onClick={onView}>
           VIEW
         </Button>
+        </div>
+        
       </div>
     </div>
   );

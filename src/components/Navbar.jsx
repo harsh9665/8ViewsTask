@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={styles.container}>
+      <div className={styles.container + ' container'}>
 
         {/* Logo */}
         <a href="/" className={styles.logoWrapper}>
@@ -30,6 +30,7 @@ export default function Navbar() {
             priority
           />
         </a>
+<div className='d-flex'>
 
         {/* Desktop Nav Links */}
         <ul className={styles.navLinks}>
@@ -48,6 +49,7 @@ export default function Navbar() {
           <span className={`${styles.bar} ${menuOpen ? styles.barOpen2 : ''}`}></span>
           <span className={`${styles.bar} ${menuOpen ? styles.barOpen3 : ''}`}></span>
         </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

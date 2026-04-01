@@ -2,8 +2,8 @@ import styles from '@/styles/QuoteSection.module.css';
 
 export default function QuoteSection() {
   return (
-    <section className={styles.quoteSection}>
-      <div className={styles.inner}>
+    <section className={styles.quoteSection} >
+      <div className={styles.inner  + ' container'}>
         {/* Left quote marks */}
         <div className={styles.quoteMark}>&ldquo;&rdquo;</div>
 

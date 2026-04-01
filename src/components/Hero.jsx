@@ -23,7 +23,7 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
       <div className={styles.overlay} />
 
       {/* Hero Content */}
-      <div className={styles.content}>
+      <div className={styles.content + ' container'}>
         <h1 className={styles.heading}>
           REMARKABLE SPACES,<br />
           GUIDED BY LIFESTYLE

@@ -26,7 +26,7 @@ export default function AboutUs() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
+      <div className={styles.inner + ' container'}>
 
         {/* ── Left — Text content ── */}
         <div className={styles.leftCol}>
@@ -52,8 +52,8 @@ export default function AboutUs() {
           <Image
             src="/images/aboutus.png"
             alt="About E-Infra"
-            width={820}
-            height={720}
+             style={{ objectFit: 'cover' }}
+             fill
             className={styles.image}
           />
         </div>

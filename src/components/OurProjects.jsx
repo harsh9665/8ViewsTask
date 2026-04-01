@@ -22,7 +22,7 @@ export default function OurProjects() {
 
   return (
     <section id="OurProjects" className={styles.section}>
-      <div className={styles.inner}>
+      <div className={styles.inner + ' container'}>
 
         {/* ── Left — Text ── */}
         <div className={styles.leftCol}>
