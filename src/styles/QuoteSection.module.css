@@ -1,43 +1,40 @@
 .quoteSection {
-  background-color: #FAF7F0;
+  display: flex;
+  background-color: #FFF8EF;
   width: 100%;
-  padding: 80px 0;
-  box-sizing: border-box;
+  padding: 113px 250px;
   position: relative;
 }
 
 .inner {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 /* Big decorative quote marks on the left */
 .quoteMark {
-  font-size: 80px;
-  line-height: 1;
-  color: #212121;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  margin-top: -10px;
-  flex-shrink: 0;
-  letter-spacing: -4px;
+  position: absolute;
+  top: 113px;
+  left: 250px;
 }
 
 /* Right side: text + brand */
 .quoteContent {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
   max-width: 960px;
+  margin-left: 320px;
+  margin-top: -20px;
+  width: 100%;
 }
 
 .quoteText {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 500;
   font-size: 56px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 1;
+  letter-spacing: 0;
   color: #212121;
   margin: 0;
 }
@@ -52,19 +49,22 @@
 
 .brandDot {
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  padding: 5px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #C9A84C; /* golden/amber */
+  background-color: #C78800;
+  /* golden/amber */
   flex-shrink: 0;
 }
 
 .brandName {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
-  font-size: 12px;
+  padding: 5px;
+  font-size: 16px;
   letter-spacing: 0.1em;
-  color: #C9A84C;
+  color: #C78800;
   text-transform: uppercase;
 }
 
@@ -73,6 +73,7 @@
   .quoteSection {
     padding: 60px 60px;
   }
+
   .quoteText {
     font-size: 42px;
   }
@@ -82,13 +83,12 @@
   .quoteSection {
     padding: 48px 24px;
   }
+
   .inner {
     flex-direction: column;
     gap: 24px;
   }
-  .quoteMark {
-    font-size: 56px;
-  }
+
   .quoteText {
     font-size: 28px;
   }
