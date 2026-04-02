@@ -1,4 +1,4 @@
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter,Karla  } from 'next/font/google';
 import './globals.css';
 import StickyContact from '@/components/StickyContact';
 import { connectDB } from '@/lib/mongodb';
@@ -9,6 +9,14 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700'],
   variable: '--font-plus-jakarta',
 });
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter',
+});
+
+const karla = Karla({ subsets: ['latin'], weight: ['800'] });
 
 export const metadata = {
   title: 'e-INFRA | Remarkable Spaces, Guided by Lifestyle',
@@ -26,9 +34,8 @@ connectDB()
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={plusJakartaSans.variable}>
-        {/* Sticky Contact Us — visible on ALL pages/sections */}
+    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
+      <body>
         <StickyContact />
         {children}
       </body>

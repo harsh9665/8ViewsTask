@@ -21,13 +21,18 @@
 
 /* ── Variants ── */
 .outline {
-  background: transparent;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  background: rgba(249, 249, 249, 0.2); /* added — was transparent */
+  border: 1px solid #F9F9F9; /* added — was #ffffff */
+  color: #F9F9F9;
+font-family: var(--font-inter), 'Inter', sans-serif;/* added */
+  font-weight: 600; /* added */
+  height: 56px;
+  width: 229px;
 }
 .outline:hover {
-  background: #ffffff;
-  color: #212121;
+  background: rgba(249, 249, 249, 0.35); /* added */
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .outlineGold {
@@ -50,6 +55,20 @@
   border-color: #a87200;
 }
 
+/* added — white filled button for Hero section*/
+.solidWhite {
+  background: #F9F9F9;
+  border: 1px solid #F9F9F9;
+  color: #212121;
+  font-family: 'Inter', sans-serif; /* added */
+  font-weight: 600; /* added */
+}
+.solidWhite:hover {
+  background: #C9A84C;
+  border-color: #C9A84C;
+  color: #ffffff;
+}
+
 .ghost {
   background: transparent;
   border: 1px solid transparent;
@@ -68,6 +87,14 @@
 .md {
   font-size: 12px;
   padding: 14px 32px;
+}
+
+/* added button — 56px height size matching Figma */
+.hero {
+  font-size: 18px; /* added — was 12px */
+  padding: 0 24px; /* added — was 16px 24px */
+  height: 56px; /* added — exact Figma */
+  line-height: 24px; /* added */
 }
 
 .lg {

@@ -1,4 +1,4 @@
-/* ── Navbar ── */
+/* ── Navbar wrapper ── */
 .navbar {
   position: fixed;
   top: 0;
@@ -6,105 +6,117 @@
   width: 100%;
   height: 100px;
   z-index: 1000;
-  background-color: rgba(33, 33, 33, 0.20);
+  background: rgba(33, 33, 33, 0.2);
   border-bottom: 1px solid #717171;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
+/* ── Show / Hide on scroll ── */
+.navVisible {
+  transform: translateY(0);
+  transition: transform 0.4s ease, background 0.3s ease;
+}
+
+.navHidden {
+  transform: translateY(-100%);
+  transition: transform 0.4s ease, background 0.3s ease;
+}
+
+/* ── Dark bg when scrolled back up past hero ── */
 .navbar.scrolled {
-  background-color: rgba(33, 33, 33, 0.85);
+  background: rgba(33, 33, 33, 0.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-.container {
+
+/* ── Inner container ── */
+.inner {
+  position: relative;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 250px;
+  padding-right: 250px;
 }
 
-/* ── Logo ── */
+/* ── Logo group (155×45) ── */
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  gap: 0px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  width: 155px;
+  height: 45px;
 }
 
-.logoIcon {
-  color: #C9A84C; /* golden amber */
-  font-style: italic;
-  font-size: 24px;
+/* ── Right side: nav links + hamburger ── */
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;           /* gap between ul and hamburger — from Figma Frame 34 */
 }
 
-.logoText {
-  color: #FFFFFF;
-}
-
-/* ── Desktop Nav Links ── */
+/* ── Nav links list (Frame 32) ── */
 .navLinks {
   display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 40px;
+  flex-direction: row;
   align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 36px;           /* from Figma Frame 32 gap: 36px */
 }
 
+/* ── Each nav link ── */
 .navLinks li a {
-  color: #FFFFFF;
-  text-decoration: none;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #F9F9F9;
+  text-decoration: none;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .navLinks li a:hover {
   color: #C9A84C;
 }
 
-/* ── Hamburger ── */
+/* ── Hamburger button (40×40) ── */
 .hamburger {
+  width: 40px;
+  height: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
-  margin-left: 32px;
+  padding: 0;
 }
 
 .bar {
   display: block;
   width: 24px;
   height: 2px;
-  background-color: #FFFFFF;
+  background-color: #F9F9F9;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.barOpen1 {
-  transform: translateY(7px) rotate(45deg);
-}
-.barOpen2 {
-  opacity: 0;
-}
-.barOpen3 {
-  transform: translateY(-7px) rotate(-45deg);
-}
+.barOpen1 { transform: translateY(7px) rotate(45deg); }
+.barOpen2 { opacity: 0; }
+.barOpen3 { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Mobile Menu ── */
+/* ── Mobile menu ── */
 .mobileMenu {
-  display: none;
   background-color: rgba(20, 20, 20, 0.97);
   padding: 24px 48px;
   border-top: 1px solid #717171;
@@ -120,12 +132,12 @@
 }
 
 .mobileMenu ul li a {
-  color: #FFFFFF;
-  text-decoration: none;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #F9F9F9;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
@@ -134,19 +146,21 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 24px;
+@media (max-width: 1024px) {
+  .inner {
+    padding-left: 48px;
+    padding-right: 32px;
   }
+}
 
+@media (max-width: 768px) {
+  .inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   .navLinks {
     display: none;
   }
-
-  .mobileMenu {
-    display: block;
-  }
-
   .navbar {
     height: 70px;
   }

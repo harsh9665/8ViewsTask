@@ -1,6 +1,5 @@
 'use client';
 
-import Button from '@/components/Button';
 import styles from '@/styles/Hero.module.css';
 
 export default function Hero({ onExploreClick, onLetsTalkClick }) {
@@ -16,26 +15,26 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
         playsInline
         poster="/images/hero-poster.jpg"
       >
-        <source src="/videos/0_Loft_Interior_3840x2160.mp4" />
+        <source src="/videos/0_Loft_Interior_3840x2160.mp4" type="video/mp4" />
       </video>
 
       {/* Gradient Overlay */}
       <div className={styles.overlay} />
 
-      {/* Hero Content */}
-      <div className={styles.content + ' container'}>
+      {/* Hero Content — no Bootstrap container, we use padding-left: 250px */}
+      <div className={styles.content}>
         <h1 className={styles.heading}>
           REMARKABLE SPACES,<br />
           GUIDED BY LIFESTYLE
         </h1>
 
         <div className={styles.buttons}>
-          <Button variant="outline" size="md" onClick={onExploreClick}>
+          <button className={styles.btnOutline} onClick={onExploreClick}>
             EXPLORE PROJECTS
-          </Button>
-          <Button variant="solid" size="md" onClick={onLetsTalkClick}>
+          </button>
+          <button className={styles.btnFilled} onClick={onLetsTalkClick}>
             LET&apos;S TALK
-          </Button>
+          </button>
         </div>
       </div>
 

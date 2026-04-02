@@ -2,91 +2,105 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;          /* full viewport height */
+  height: 100vh;
   min-height: 600px;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;  /* content sits at the bottom like Figma */
+  align-items: flex-end;
 }
 
 /* ── Video Background ── */
 .videoBg {
   position: absolute;
-  inset: 0;               /* top:0, right:0, bottom:0, left:0 */
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* fills the section without stretching */
+  object-fit: cover;
   object-position: center;
   z-index: 0;
 }
 
-/* ── Dark Gradient Overlay ── */
-/* Matches Figma: linear gradient #000000 at 80%, 20%, 20%, 100% */
+/* ── Gradient Overlay ── */
+/* Figma: #000000 at 80%, 20%, 20%, 100% — bottom to top */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.80) 0%,
-    rgba(0, 0, 0, 0.20) 50%,
-    rgba(0, 0, 0, 0.20) 80%,
-    rgba(0, 0, 0, 0.00) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.80) 0%,
+      rgba(0, 0, 0, 0.20) 50%,
+      rgba(0, 0, 0, 0.20) 80%,
+      rgba(0, 0, 0, 0.00) 100%);
   z-index: 1;
 }
 
-/* ── Hero Content ── */
+/* ── Hero Content Row ── */
+/* Figma: Left: 250px, Top: 761px, Gap: 134px, 1420×166px */
 .content {
   position: relative;
   z-index: 2;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 0 80px 0;
+  padding-left: 250px;
+  /* Left: 250px from Figma */
+  padding-right: 250px;
+  /* mirror right side */
+  padding-bottom: 153px;
+  /* 1080 - 761 - 166 = ~153px from bottom, approx */
   display: flex;
   flex-direction: row;
+  /* Horizontal flow */
   align-items: flex-end;
   justify-content: space-between;
-  gap: 130px;
+  gap: 134px;
+  /* Gap: 134px from Figma */
 }
 
 /* ── Heading ── */
-/* Figma: Plus Jakarta Sans, 600, SemiBold, 890×166px */
+/* Figma: Plus Jakarta Sans 600, width ~890px */
 .heading {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(36px, 5vw, 72px); /* scales responsively */
+  font-size: clamp(32px, 4.5vw, 70px);
   font-weight: 600;
-  color: #FFFFFF;
-  line-height: 1.1;
-  letter-spacing: 1px;
+  color: #F9F9F9;
+  line-height: 100%;
+  letter-spacing: 6%;
   text-transform: uppercase;
   margin: 0;
-  max-width: 890px;
+  flex: 1;
+  /* takes remaining space */
 }
 
-/* ── Buttons ── */
+/* ── Buttons group ── */
 .buttons {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 20px;
   align-items: center;
   flex-shrink: 0;
-  padding-bottom: 6px;
+  /* never shrinks */
 }
 
-/* "EXPLORE PROJECTS" — transparent/outline button */
+/* ── EXPLORE PROJECTS button ── */
 .btnOutline {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  color: #FFFFFF;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  padding: 14px 24px;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  width: 229px;
+  height: 56px;
+  padding: 16px 24px;
+  gap: 20px;
+
+  background: #F9F9F933;
+  border: 1px solid #F9F9F9;
+  color: #F9F9F9;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+
   text-transform: uppercase;
   white-space: nowrap;
+  cursor: pointer;
+
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .btnOutline:hover {
@@ -94,20 +108,30 @@
   border-color: #FFFFFF;
 }
 
-/* "LET'S TALK" — white filled button */
+/* ── LET'S TALK button ── */
 .btnFilled {
-  background: #FFFFFF;
-  border: 1px solid #FFFFFF;
-  color: #000000;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
+  background: #F9F9F9;
+  border: 1px solid #F9F9F9;
+  color: #212121;
+  /* ← changed from #000000 to #212121 */
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  /* ← changed from 13px to 18px */
   font-weight: 600;
-  letter-spacing: 1.5px;
-  padding: 14px 24px;
+  line-height: 24px;
+  /* ← added from Figma */
+  letter-spacing: 0%;
+  /* ← changed from 1.5px to 0 */
+  padding: 16px 24px;
+  /* ← changed from 14px 24px to 16px 24px */
+  width: 147px;
+  /* ← added from Figma */
+  height: 56px;
+  /* ← added from Figma */
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
   text-transform: uppercase;
   white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .btnFilled:hover {
@@ -116,31 +140,37 @@
   color: #FFFFFF;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
+/* ── Responsive: Tablet ── */
+@media (max-width: 1280px) {
   .content {
-    padding: 0 48px 60px 48px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
+    padding-left: 120px;
+    padding-right: 120px;
+    gap: 80px;
   }
 }
 
+@media (max-width: 1024px) {
+  .content {
+    padding-left: 48px;
+    padding-right: 48px;
+    gap: 48px;
+  }
+}
+
+/* ── Responsive: Mobile ── */
 @media (max-width: 768px) {
   .content {
-    padding: 0 24px 48px 24px;
     flex-direction: column;
+    /* stack heading above buttons */
     align-items: flex-start;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 48px;
     gap: 28px;
   }
 
   .heading {
     font-size: clamp(28px, 7vw, 48px);
-  }
-
-  .buttons {
-    flex-direction: row;
-    gap: 10px;
   }
 }
 
