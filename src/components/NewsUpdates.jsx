@@ -1,16 +1,27 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
+import ContactForm from '@/components/ContactForm';
+import Modal from '@/components/Modal';
 import logo from '@/constants/logo.png';
 import { newsItems } from '@/data/siteData';
 import styles from '@/styles/NewsUpdates.module.css';
 
 export default function NewsUpdates() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
         <header className={styles.header}>
           <h2 className={styles.title}>News &amp; Updates</h2>
 
-          <button type="button" className={styles.viewAll}>
+          <button
+            type="button"
+            className={styles.viewAll}
+            onClick={() => setIsModalOpen(true)}
+          >
             VIEW ALL
           </button>
         </header>
@@ -48,6 +59,17 @@ export default function NewsUpdates() {
           ))}
         </div>
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="News & Updates"
+      >
+        <ContactForm
+          source="news_updates"
+          onSuccess={() => setIsModalOpen(false)}
+        />
+      </Modal>
     </section>
   );
 }

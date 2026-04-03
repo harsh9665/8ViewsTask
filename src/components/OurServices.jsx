@@ -7,7 +7,7 @@ import { services } from '@/data/siteData';
 import styles from '@/styles/OurServices.module.css';
 
 export default function OurServices() {
-  const [hoveredServiceId, setHoveredServiceId] = useState(null);
+  const [hoveredServiceId, setHoveredServiceId] = useState(services[0]?.id ?? null);
 
   return (
     <section id="our-services" className={styles.section}>
@@ -22,8 +22,11 @@ export default function OurServices() {
               <article
                 key={service.id}
                 className={`${styles.row} ${isHovered ? styles.rowHovered : ''}`}
+                tabIndex={0}
                 onMouseEnter={() => setHoveredServiceId(service.id)}
-                onMouseLeave={() => setHoveredServiceId(null)}
+                onMouseLeave={() => setHoveredServiceId(services[0]?.id ?? null)}
+                onClick={() => setHoveredServiceId(service.id)}
+                onFocus={() => setHoveredServiceId(service.id)}
               >
                 <div className={styles.rowContent}>
                   <div className={styles.textBlock}>
@@ -37,7 +40,7 @@ export default function OurServices() {
                       alt=""
                       fill
                       className={styles.serviceImage}
-                      sizes="(max-width: 1279px) 0px, 400px"
+                      sizes="(max-width: 767px) 100vw, (max-width: 1279px) 520px, 432px"
                     />
                   </div>
 

@@ -103,7 +103,8 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 120px 48px;
+    /* Small/mid desktop side padding adapts, large desktop still reaches Figma spacing. */
+    padding: 120px clamp(48px, 6vw, 120px);
   }
 
   .leftCol {
@@ -117,21 +118,93 @@
   }
 
   .rightCol {
-    width: min(820px, calc(100vw - 696px));
+    width: min(820px, calc(100% - 600px));
     max-width: 820px;
-    height: 720px;
-    aspect-ratio: auto;
+    min-height: unset;
+    height: auto;
+    aspect-ratio: 820 / 720;
     flex-shrink: 0;
   }
 }
 
 @media (min-width: 1440px) {
   .inner {
-    padding-left: 0;
-    padding-right: 0;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-left: clamp(48px, 13vw, 250px);
+    padding-right: clamp(48px, 13vw, 250px);
   }
 
   .rightCol {
     width: 820px;
+    min-height: unset;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    padding: 96px 48px;
+    gap: 32px;
+  }
+
+  .leftCol {
+    width: 420px;
+    flex-shrink: 0;
+  }
+
+  .title {
+    font-size: 52px;
+    line-height: 1.15;
+  }
+
+  .rightCol {
+    min-height: unset;
+    aspect-ratio: 820 / 720;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .inner {
+    padding: 120px 64px;
+  }
+
+  .leftCol {
+    width: 520px;
+  }
+
+  .rightCol {
+    width: min(680px, calc(100% - 540px));
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .inner {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+
+  .rightCol {
+    width: 720px;
+  }
+}
+
+/* Extra large desktops */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .inner {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .inner {
+    padding-left: 250px;
+    padding-right: 250px;
   }
 }

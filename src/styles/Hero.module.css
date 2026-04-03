@@ -39,30 +39,30 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-left: 250px;
-  /* Left: 250px from Figma */
-  padding-right: 250px;
-  /* mirror right side */
-  padding-bottom: 153px;
+  /* Desktop side padding scales down on smaller laptops while preserving the 250px Figma max. */
+  padding-left: clamp(48px, 13vw, 250px);
+  padding-right: clamp(48px, 13vw, 250px);
+  padding-bottom: clamp(96px, 14svh, 153px);
   /* 1080 - 761 - 166 = ~153px from bottom, approx */
   display: flex;
   flex-direction: row;
   /* Horizontal flow */
   align-items: flex-end;
   justify-content: space-between;
-  gap: 134px;
+  gap: clamp(48px, 7vw, 134px);
   /* Gap: 134px from Figma */
 }
 
 /* ── Heading ── */
 /* Figma: Plus Jakarta Sans 600, width ~890px */
 .heading {
+  max-width: 890px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(32px, 4.5vw, 70px);
+  font-size: clamp(52px, 3.65vw, 70px);
   font-weight: 600;
   color: #F9F9F9;
   line-height: 100%;
-  letter-spacing: 6%;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin: 0;
   flex: 1;
@@ -73,18 +73,20 @@
 .buttons {
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  align-items: center;
+  gap: clamp(16px, 1.2vw, 20px);
+  align-items: flex-end;
   flex-shrink: 0;
   /* never shrinks */
 }
 
 /* ── EXPLORE PROJECTS button ── */
 .btnOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 229px;
   height: 56px;
   padding: 16px 24px;
-  gap: 20px;
 
   background: #F9F9F933;
   border: 1px solid #F9F9F9;
@@ -110,6 +112,9 @@
 
 /* ── LET'S TALK button ── */
 .btnFilled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #F9F9F9;
   border: 1px solid #F9F9F9;
   color: #212121;
@@ -120,7 +125,7 @@
   font-weight: 600;
   line-height: 24px;
   /* ← added from Figma */
-  letter-spacing: 0%;
+  letter-spacing: 0;
   /* ← changed from 1.5px to 0 */
   padding: 16px 24px;
   /* ← changed from 14px 24px to 16px 24px */
@@ -141,19 +146,121 @@
 }
 
 /* ── Responsive: Tablet ── */
-@media (max-width: 1280px) {
+@media (min-width: 1600px) and (max-width: 1919px) {
   .content {
-    padding-left: 120px;
-    padding-right: 120px;
-    gap: 80px;
+    padding-bottom: 120px;
+    gap: 72px;
+  }
+
+  .heading {
+    max-width: 720px;
+    font-size: 58px;
+  }
+
+  .btnOutline {
+    width: 220px;
+    height: 54px;
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  .btnFilled {
+    width: 138px;
+    height: 54px;
+    padding: 14px 20px;
+    font-size: 16px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .content {
+    gap: 64px;
+  }
+
+  .heading {
+    max-width: 680px;
+    font-size: 54px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .content {
+    padding-bottom: 96px;
+    gap: 56px;
+  }
+
+  .heading {
+    max-width: 620px;
+    font-size: 50px;
+    line-height: 1.05;
+  }
+
+  .btnOutline {
+    width: 204px;
+    height: 52px;
+    font-size: 15px;
+  }
+
+  .btnFilled {
+    width: 132px;
+    height: 52px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .content {
+    padding-left: 250px;
+    padding-right: 250px;
+    padding-bottom: 153px;
+    gap: 134px;
+  }
+
+  .heading {
+    max-width: 890px;
+    font-size: 70px;
+    line-height: 1;
+  }
+
+  .btnOutline {
+    width: 229px;
+    height: 56px;
+    font-size: 18px;
+  }
+
+  .btnFilled {
+    width: 147px;
+    height: 56px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
   .content {
     padding-left: 48px;
     padding-right: 48px;
-    gap: 48px;
+    padding-bottom: 72px;
+    gap: 32px;
+  }
+
+  .heading {
+    max-width: 520px;
+    font-size: 42px;
+    line-height: 1.08;
+  }
+
+  .btnOutline {
+    width: 184px;
+    height: 50px;
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .btnFilled {
+    width: 120px;
+    height: 50px;
+    padding: 12px 18px;
+    font-size: 14px;
   }
 }
 
@@ -170,6 +277,7 @@
   }
 
   .heading {
+    max-width: 100%;
     font-size: clamp(28px, 7vw, 48px);
   }
 }

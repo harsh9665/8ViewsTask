@@ -20,7 +20,7 @@ export default function InteriorVideo() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.section}>
+    <section id="gallery" ref={sectionRef} className={styles.section}>
       <div className={styles.videoWrapper}>
         <video
           className={`${styles.video} ${isVisible ? styles.videoVisible : ''}`}

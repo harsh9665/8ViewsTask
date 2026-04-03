@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Button from '@/components/Button';
+import { useOverlay } from '@/context/OverlayContext';
 import { hasErrors, validateContactForm } from '@/utils/validators';
 import styles from '@/styles/ContactForm.module.css';
 
@@ -19,7 +20,7 @@ const fields = [
     name: 'mobile',
     type: 'tel',
     placeholder: 'Mobile number',
-    maxLength: 15,
+    maxLength: 10,
   },
 ];
 
@@ -27,11 +28,13 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('');
+  const { showOverlay } = useOverlay();
+  const isSubmitting = status === 'loading';
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'mobile' && !/^[0-9+\-\s]*$/.test(value)) return;
+    if (name === 'mobile' && !/^[0-9]*$/.test(value)) return;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -60,16 +63,33 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
     setStatus('loading');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source }),
-      });
+      const [response] = await Promise.all([
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...formData, source }),
+        }),
+        new Promise((resolve) => setTimeout(resolve, 4000)),
+      ]);
+
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         setStatus('error');
         return;
       }
+
+      showOverlay(
+        result.status === 'duplicate'
+          ? {
+              heading: "You're already in our system",
+              message: result.message || 'We already have your enquiry. Our team will get back to you shortly.',
+            }
+          : {
+              heading: 'Thank you',
+              message: "We've received your enquiry. Our team will contact you shortly.",
+            }
+      );
 
       setStatus('success');
       setFormData(initialForm);
@@ -99,6 +119,9 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
               onChange={handleChange}
               onBlur={handleBlur}
               maxLength={maxLength}
+              inputMode={name === 'mobile' ? 'numeric' : undefined}
+              pattern={name === 'mobile' ? '[0-9]*' : undefined}
+              disabled={isSubmitting}
             />
 
             {errors[name] && (
@@ -122,6 +145,7 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
             onChange={handleChange}
             onBlur={handleBlur}
             rows={4}
+            disabled={isSubmitting}
           />
 
           {errors.message && (
@@ -135,14 +159,17 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
         variant="solid"
         size="md"
         className={styles.submitButton}
-        disabled={status === 'loading'}
+        disabled={isSubmitting}
       >
-        {status === 'loading' ? 'SUBMITTING...' : 'SUBMIT'}
+        {isSubmitting ? (
+          <span className={styles.loadingContent}>
+            <span className={styles.spinner} aria-hidden="true" />
+            SUBMITTING...
+          </span>
+        ) : (
+          'SUBMIT'
+        )}
       </Button>
-
-      {status === 'success' && (
-        <p className={styles.successMsg}>Thank you! We&apos;ll be in touch soon.</p>
-      )}
 
       {status === 'error' && (
         <p className={styles.errorMsg}>Something went wrong. Please try again.</p>

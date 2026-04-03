@@ -47,6 +47,11 @@
   box-shadow: 0 0 0 2px rgba(199, 136, 0, 0.12);
 }
 
+.input:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
 .inputError {
   border-color: #e53935;
   box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.08);
@@ -70,9 +75,9 @@
 }
 
 .submitButton {
-  width: 160px;
+  min-width: 160px;
   height: 56px;
-  padding: 16px 24px;
+  padding: 14px 20px;
   border: 1px solid #c78800;
   background: #c78800;
   font-family: var(--font-inter), 'Inter', sans-serif;
@@ -94,7 +99,6 @@
   cursor: progress;
 }
 
-.successMsg,
 .errorMsg {
   margin: 0;
   font-family: var(--font-inter), 'Inter', sans-serif;
@@ -103,12 +107,34 @@
   line-height: 1.4;
 }
 
-.successMsg {
-  color: #2e7d32;
-}
-
 .errorMsg {
   color: #c62828;
+}
+
+.loadingContent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 768px) {

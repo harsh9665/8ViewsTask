@@ -1,0 +1,109 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.fadeIn {
+  animation: fadeIn 300ms ease forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 300ms ease forwards;
+}
+
+.card {
+  width: min(100%, 580px);
+  border: 1px solid rgba(234, 214, 170, 0.45);
+  background: #212121;
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+}
+
+.cardIn {
+  animation: cardIn 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.cardOut {
+  animation: cardOut 300ms ease forwards;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #c78800;
+}
+
+.heading {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 600;
+  line-height: 1;
+  color: #f9f9f9;
+}
+
+.message {
+  margin: 18px auto 0;
+  max-width: 450px;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 40px 24px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+}

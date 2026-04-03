@@ -133,7 +133,7 @@
   }
 
   .card {
-    width: 640px;
+    width: min(640px, calc(100vw - 96px));
     min-height: 390px;
     gap: 40px;
     padding: 56px;
@@ -170,7 +170,7 @@
   }
 
   .card {
-    width: 940px;
+    width: min(940px, calc(100vw - 96px));
     min-height: 420px;
     padding: 80px;
   }
@@ -181,5 +181,45 @@
 
   .review {
     font-size: 24px;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    padding: 96px 0;
+  }
+
+  .title {
+    font-size: 52px;
+  }
+
+  .card {
+    width: min(720px, calc(100vw - 96px));
+    padding: 56px;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .section {
+    min-height: 820px;
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 1.15;
+  }
+
+  .card {
+    width: min(820px, calc(100vw - 96px));
+    padding: 64px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .card {
+    width: 940px;
   }
 }

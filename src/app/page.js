@@ -31,7 +31,6 @@ export default function Home() {
       <Navbar />
 
       <Hero
-        onExploreClick={() => setExploreOpen(true)}
         onLetsTalkClick={() => setLetsTalkOpen(true)}
       />
 

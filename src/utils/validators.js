@@ -26,6 +26,7 @@ export const validators = {
   },
 
   message: (value) => {
+    if (!value || value.trim() === '') return 'Message is required';
     if (value && value.length > 1000) return 'Message must be under 1000 characters';
     return null;
   },

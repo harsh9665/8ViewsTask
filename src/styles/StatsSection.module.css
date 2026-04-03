@@ -76,3 +76,37 @@
     max-width: 260px;
   }
 }
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    padding: 80px 48px;
+  }
+
+  .inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 48px;
+  }
+
+  .number {
+    font-size: 64px;
+  }
+
+  .label {
+    font-size: 18px;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .inner {
+    column-gap: 96px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .inner {
+    column-gap: 220px;
+  }
+}

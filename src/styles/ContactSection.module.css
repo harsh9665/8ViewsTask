@@ -41,8 +41,9 @@
 
 @media (min-width: 1280px) {
   .section {
-    min-height: max(100svh, 912px);
-    padding: 180px 24px;
+    /* Keeps desktop form height balanced on shorter laptops and larger monitors. */
+    min-height: clamp(760px, 100svh, 912px);
+    padding: clamp(120px, 12vw, 180px) clamp(24px, 4vw, 48px);
   }
 
   .inner {
@@ -54,6 +55,50 @@
   .heading {
     width: 580px;
     flex: 0 0 580px;
+    font-size: 64px;
+    line-height: 81px;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    min-height: auto;
+    padding: 96px 48px;
+  }
+
+  .inner {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .heading {
+    width: 420px;
+    flex: 0 0 420px;
+    font-size: 52px;
+    line-height: 1.15;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .section {
+    padding: 120px 48px;
+  }
+
+  .heading {
+    width: 480px;
+    flex-basis: 480px;
+    font-size: 56px;
+    line-height: 1.15;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .heading {
+    width: 580px;
+    flex-basis: 580px;
     font-size: 64px;
     line-height: 81px;
   }

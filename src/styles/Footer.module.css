@@ -1,7 +1,8 @@
 .footer {
   width: 100%;
-  background: #212121;
+  background: var(--color-dark-surface);
 }
+
 
 .body {
   width: 100%;
@@ -26,7 +27,8 @@
 }
 
 .navCol {
-  width: 120px;
+  width: max-content;
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -37,10 +39,11 @@
 .contactLink,
 .followText,
 .socialLink {
+  
   font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.2;
-  color: #f9f9f9;
+  color: var(--color-white-soft);
   text-decoration: none;
 }
 
@@ -57,6 +60,7 @@
 
 .navLink {
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .contactCol {
@@ -67,12 +71,15 @@
 }
 
 .address {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
+  width: 100%;
 }
 
 .addressText {
+  flex: 1 1 auto;
+  min-width: 0;
   width: min(100%, 340px);
 }
 
@@ -104,20 +111,24 @@
   flex: 0 0 24px;
   width: 24px;
   height: 24px;
-  color: #f9f9f9;
+  color: var(--color-white-soft);
+}
+
+.address .arrowIcon {
+  margin-top: 2px;
 }
 
 .navLink:hover,
 .address:hover,
 .contactLink:hover,
 .socialLink:hover {
-  color: #c78800;
+  color: var(--color-gold);
 }
 
 .navLink:hover .arrowIcon,
 .address:hover .arrowIcon,
 .socialLink:hover .arrowIcon {
-  color: #c78800;
+  color: var(--color-gold);
 }
 
 .bottomBar {
@@ -139,7 +150,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
-  color: #c78800;
+  color: var(--color-gold);
 }
 
 @media (min-width: 768px) {
@@ -176,17 +187,20 @@
     min-height: 480px;
     flex-direction: row;
     align-items: flex-start;
-    gap: 264px;
-    padding: 80px 250px 210px 250px;
+    justify-content: space-between;
+    /* Desktop spacing scales down on smaller laptops while preserving the 250px Figma max. */
+    gap: clamp(64px, 8vw, 264px);
+    padding: 80px clamp(48px, 13vw, 250px) 120px;
   }
 
   .columns {
-    width: 820px;
+    width: min(820px, 100%);
     flex-wrap: nowrap;
-    gap: 99px;
+    gap: clamp(40px, 5vw, 99px);
   }
 
   .navCol {
+    min-width: 132px;
     gap: 32px;
   }
 
@@ -205,6 +219,68 @@
 
   .contactCol {
     gap: 56px;
+  }
+
+  .bottomBar {
+    padding: 20px clamp(48px, 13vw, 250px);
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .body {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
+    padding: 72px 48px 80px;
+  }
+
+  .columns {
+    flex-wrap: nowrap;
+    gap: 48px;
+  }
+
+  .bottomBar {
+    padding: 20px 48px;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .body {
+    gap: 72px;
+    padding: 80px 64px 100px;
+  }
+
+  .columns {
+    gap: 56px;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .body {
+    padding-left: 96px;
+    padding-right: 96px;
+    gap: 96px;
+  }
+}
+
+/* Extra large desktops */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .body {
+    padding-left: 140px;
+    padding-right: 140px;
+    gap: 140px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .body {
+    padding: 80px 250px 120px;
+    gap: 264px;
   }
 
   .bottomBar {

@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Shared Figma palette tokens used across sections. */
+  --color-page-bg: #ffffff;
+  --color-dark-surface: #212121;
+  --color-cream-surface: #fff8ef;
+  --color-white-soft: #f9f9f9;
+  --color-gold: #c78800;
+  --color-gold-soft: #dcbc82;
+  --color-border-gold: #ead6aa;
+  --color-text-muted: #949494;
+  --color-text-body: #5c5c5c;
+  --background: var(--color-page-bg);
+  --foreground: var(--color-dark-surface);
 }
 
 @theme inline {
@@ -14,17 +24,27 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-page-bg);
+    --foreground: var(--color-dark-surface);
   }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
 }

@@ -89,7 +89,8 @@
 
   .inner {
     flex-direction: row;
-    gap: 372px;
+    /* Keeps the Figma 372px gap on wide desktops but compresses on smaller laptops. */
+    gap: clamp(96px, 18vw, 372px);
   }
 
   .quoteMark {
@@ -106,5 +107,41 @@
   .quoteText {
     font-size: 56px;
     line-height: 71px;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .quoteSection {
+    padding: 96px 48px;
+  }
+
+  .inner {
+    flex-direction: row;
+    gap: 96px;
+  }
+
+  .quoteText {
+    font-size: 44px;
+    line-height: 1.2;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .inner {
+    gap: 140px;
+  }
+
+  .quoteText {
+    font-size: 48px;
+    line-height: 1.2;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .inner {
+    gap: 372px;
   }
 }

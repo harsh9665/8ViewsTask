@@ -140,7 +140,7 @@
 
 @media (min-width: 1280px) {
   .slide {
-    height: 960px;
+    height: clamp(760px, 100svh, 960px);
   }
 
   .contentWrap {
@@ -149,8 +149,8 @@
 
   .content {
     position: absolute;
-    left: 250px;
-    top: 341px;
+    left: clamp(48px, 13vw, 250px);
+    top: clamp(180px, 28svh, 341px);
     width: 600px;
   }
 
@@ -172,11 +172,10 @@
   }
 
   .title {
-    width: max-content;
-    max-width: 900px;
+    width: min(100%, 900px);
     font-size: 80px;
     line-height: 101px;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .description {
@@ -185,5 +184,78 @@
 
   .tags {
     width: 359px;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .slide {
+    height: 760px;
+  }
+
+  .contentWrap {
+    padding: 80px 48px;
+  }
+
+  .content {
+    width: min(100%, 540px);
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 1.15;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .slide {
+    height: 820px;
+  }
+
+  .content {
+    left: 64px;
+    top: 240px;
+    width: 540px;
+  }
+
+  .copyGroup,
+  .projectInfo,
+  .textBlock,
+  .description {
+    width: 540px;
+  }
+
+  .title {
+    font-size: 64px;
+    line-height: 1.1;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .content {
+    left: 96px;
+    top: 260px;
+  }
+}
+
+/* Extra large desktops */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .content {
+    left: 140px;
+    top: 300px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .slide {
+    height: 960px;
+  }
+
+  .content {
+    left: 250px;
+    top: 341px;
   }
 }

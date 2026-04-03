@@ -2,19 +2,21 @@
   width: 100%;
   background: #fff8ef;
   overflow: hidden;
+  --projects-side-padding: clamp(48px, 13vw, 250px);
 }
 
 .inner {
   position: relative;
-  width: 1920px;
-  height: 960px;
+  width: 100%;
+  max-width: 1920px;
+  height: clamp(760px, 100svh, 960px);
   margin: 0 auto;
 }
 
 .leftCol {
   position: absolute;
-  left: 250px;
-  top: 368px;
+  left: var(--projects-side-padding);
+  top: clamp(220px, 38svh, 368px);
   width: 580px;
   display: flex;
   flex-direction: column;
@@ -52,14 +54,15 @@
 
 .rightCol {
   position: absolute;
-  left: 850px;
-  top: 240px;
-  width: 1070px;
+  left: calc(var(--projects-side-padding) + 600px);
+  top: clamp(140px, 24svh, 240px);
+  width: calc(100% - var(--projects-side-padding) - 600px);
+  max-width: 1070px;
   height: 480px;
 }
 
 .sliderViewport {
-  width: 1070px;
+  width: 100%;
   height: 480px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -84,7 +87,7 @@
   position: absolute;
   left: 6px;
   top: 224px;
-  width: 1052px;
+  width: calc(100% - 18px);
   height: 32px;
   display: flex;
   flex-direction: row;
@@ -222,5 +225,112 @@
   .arrowIcon {
     width: 7px;
     height: 7px;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    padding: 80px 0;
+  }
+
+  .inner {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .leftCol,
+  .rightCol {
+    position: static;
+    width: 100%;
+  }
+
+  .leftCol {
+    padding: 0 48px;
+  }
+
+  .textGroup,
+  .title {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 52px;
+    line-height: 1.15;
+  }
+
+  .description {
+    width: min(100%, 520px);
+  }
+
+  .rightCol {
+    padding-left: 48px;
+    height: auto;
+  }
+
+  .sliderViewport,
+  .cardsStrip {
+    height: auto;
+  }
+
+  .arrowRow {
+    left: 54px;
+    top: 50%;
+    width: calc(100% - 108px);
+    transform: translateY(-50%);
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .section {
+    --projects-side-padding: 64px;
+  }
+
+  .leftCol {
+    top: 280px;
+    width: 500px;
+  }
+
+  .textGroup,
+  .title {
+    width: 500px;
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 1.15;
+  }
+
+  .description {
+    width: 480px;
+  }
+
+  .rightCol {
+    left: calc(var(--projects-side-padding) + 520px);
+    width: calc(100% - var(--projects-side-padding) - 520px);
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .section {
+    --projects-side-padding: 96px;
+  }
+}
+
+/* Extra large desktops */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .section {
+    --projects-side-padding: 140px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .section {
+    --projects-side-padding: 250px;
   }
 }

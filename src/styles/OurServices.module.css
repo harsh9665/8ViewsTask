@@ -34,6 +34,7 @@
 .row {
   width: 100%;
   border-bottom: 1px solid #555555;
+  cursor: pointer;
 }
 
 .rowContent {
@@ -47,6 +48,7 @@
 }
 
 .textBlock {
+  grid-column: 1;
   width: min(100%, 580px);
   display: flex;
   flex-direction: column;
@@ -59,7 +61,11 @@
   font-size: 28px;
   font-weight: 500;
   line-height: 1;
-  color: #f9f9f9;
+  color: #949494;
+  transform-origin: left center;
+  transition:
+    color 500ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .serviceDesc {
@@ -70,20 +76,41 @@
   font-weight: 400;
   line-height: 1.4;
   color: #949494;
+  transition: color 500ms ease;
 }
 
 .imageBlock {
-  display: none;
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: 0;
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    height 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 400ms ease,
+    margin-top 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .serviceImage {
   object-fit: cover;
+  transform: translateY(100%);
+  transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .arrowBlock {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
   width: 44px;
   height: 44px;
   flex: 0 0 44px;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -93,6 +120,32 @@
   width: 18px;
   height: 18px;
   color: #949494;
+  transition:
+    color 500ms ease,
+    transform 500ms ease;
+}
+
+.rowHovered .serviceName {
+  color: #f9f9f9;
+  transform: scale(1.03);
+}
+
+.rowHovered .arrowIcon {
+  color: #f9f9f9;
+}
+
+.rowHovered .imageBlock {
+  height: 200px;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+.rowHovered .serviceImage {
+  transform: translateY(0);
+}
+
+.rowHovered .arrowIcon {
+  transform: translate(3px, -3px);
 }
 
 @media (min-width: 768px) {
@@ -113,7 +166,12 @@
     padding: 56px 24px;
   }
 
+  .rowHovered .imageBlock {
+    height: 260px;
+  }
+
   .textBlock {
+    grid-column: 1;
     gap: 20px;
   }
 
@@ -135,8 +193,9 @@
 
 @media (min-width: 1280px) {
   .section {
-    min-height: 1802px;
-    padding: 80px 24px 120px;
+    /* Keeps the large desktop feel, but removes excess empty height on 1280-1536px screens. */
+    min-height: clamp(1200px, 94vw, 1802px);
+    padding: 80px clamp(24px, 4vw, 48px) 120px;
   }
 
   .inner {
@@ -145,50 +204,154 @@
 
   .title {
     width: 100%;
-    height: 142px;
-    font-size: 120px;
+    height: auto;
+    font-size: clamp(80px, 6.25vw, 120px);
     line-height: 1;
   }
 
   .row {
     position: relative;
-    transition: background-color 300ms ease;
   }
 
-  .row:hover,
-  .rowHovered {
-    background: rgba(255, 255, 255, 0.03);
+  .row:hover .serviceName,
+  .rowHovered .serviceName {
+    color: #f9f9f9;
+    transform: scale(1.06);
+  }
+
+  .row:hover .arrowIcon,
+  .rowHovered .arrowIcon {
+    color: #f9f9f9;
+  }
+
+  .row:hover .arrowIcon,
+  .rowHovered .arrowIcon {
+    transform: translate(5px, -5px);
   }
 
   .rowContent {
-    grid-template-columns: 580px minmax(0, 1fr) 100px;
+    grid-template-columns: minmax(420px, 580px) minmax(320px, 1fr) 100px;
     min-height: 240px;
-    padding: 68px 24px 68px 120px;
+    padding: 64px 0 64px clamp(48px, 6vw, 120px);
   }
 
   .imageBlock {
     position: relative;
-    display: block;
+    grid-column: auto;
+    grid-row: auto;
     justify-self: center;
-    width: min(100%, 400px);
-    height: 180px;
+    width: min(100%, 432px);
+    height: 226px;
+    margin-top: 0;
     opacity: 0;
     overflow: hidden;
-    clip-path: inset(0 100% 0 0);
-    transition:
-      clip-path 600ms cubic-bezier(0.77, 0, 0.175, 1),
-      opacity 400ms ease;
+    transition: opacity 700ms ease;
   }
 
   .row:hover .imageBlock,
   .rowHovered .imageBlock {
     opacity: 1;
-    clip-path: inset(0 0 0 0);
+  }
+
+  .row:hover .serviceImage,
+  .rowHovered .serviceImage {
+    transform: translateY(0);
   }
 
   .arrowBlock {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: center;
     width: 100px;
     height: 100px;
     flex-basis: 100px;
+    padding: 7px;
+  }
+
+  .arrowIcon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    padding: 80px 48px 96px;
+  }
+
+  .title {
+    font-size: 72px;
+  }
+
+  .rowContent {
+    grid-template-columns: minmax(0, 1fr) 64px;
+    padding: 56px 24px;
+  }
+
+  .rowHovered .imageBlock {
+    height: 260px;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .section {
+    min-height: 1320px;
+    padding: 80px 32px 104px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  .rowContent {
+    grid-template-columns: minmax(420px, 500px) minmax(320px, 1fr) 90px;
+    padding-left: 56px;
+  }
+
+  .imageBlock {
+    width: min(100%, 380px);
+    height: 210px;
+  }
+
+  .arrowBlock {
+    width: 90px;
+    height: 90px;
+    flex-basis: 90px;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .section {
+    min-height: 1450px;
+    padding-inline: 40px;
+  }
+
+  .title {
+    font-size: 90px;
+  }
+}
+
+/* Extra large desktops */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .section {
+    min-height: 1600px;
+  }
+
+  .title {
+    font-size: 104px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .section {
+    min-height: 1802px;
+  }
+
+  .title {
+    font-size: 120px;
   }
 }

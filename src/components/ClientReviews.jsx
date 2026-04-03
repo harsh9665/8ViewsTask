@@ -1,7 +1,14 @@
+'use client';
+
+import { useState } from 'react';
+import ContactForm from '@/components/ContactForm';
+import Modal from '@/components/Modal';
 import { clientReviews } from '@/data/siteData';
 import styles from '@/styles/ClientReviews.module.css';
 
 export default function ClientReviews() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="client-reviews" className={styles.section}>
       <h2 className={styles.title}>Our Client Reviews</h2>
@@ -21,9 +28,24 @@ export default function ClientReviews() {
         </div>
       </div>
 
-      <button type="button" className={styles.viewAll}>
+      <button
+        type="button"
+        className={styles.viewAll}
+        onClick={() => setIsModalOpen(true)}
+      >
         VIEW ALL
       </button>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Client Reviews"
+      >
+        <ContactForm
+          source="client_reviews"
+          onSuccess={() => setIsModalOpen(false)}
+        />
+      </Modal>
     </section>
   );
 }

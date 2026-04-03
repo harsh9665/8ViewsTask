@@ -37,8 +37,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 250px;
-  padding-right: 250px;
+  padding-left: clamp(48px, 13vw, 250px);
+  padding-right: clamp(48px, 13vw, 250px);
 }
 
 /* ── Logo group (155×45) ── */
@@ -117,9 +117,13 @@
 
 /* ── Mobile menu ── */
 .mobileMenu {
-  background-color: rgba(20, 20, 20, 0.97);
-  padding: 24px 48px;
+  background: rgba(33, 33, 33, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 14px 24px 24px;
   border-top: 1px solid #717171;
+  border-bottom: 1px solid rgba(113, 113, 113, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
 }
 
 .mobileMenu ul {
@@ -128,21 +132,31 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0;
 }
 
 .mobileMenu ul li a {
+  display: block;
+  padding: 18px 0;
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #F9F9F9;
   text-decoration: none;
-  transition: color 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
 .mobileMenu ul li a:hover {
   color: #C9A84C;
+  padding-left: 8px;
+}
+
+.mobileMenu ul li:last-child a {
+  border-bottom: 0;
 }
 
 /* ── Responsive ── */
@@ -169,5 +183,75 @@
 @media (min-width: 769px) {
   .mobileMenu {
     display: none !important;
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .navbar {
+    height: 88px;
+  }
+
+  .inner {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .logo {
+    width: 145px;
+    height: 42px;
+  }
+
+  .right {
+    gap: 28px;
+  }
+
+  .navLinks {
+    gap: 24px;
+  }
+
+  .navLinks li a {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .navbar {
+    height: 92px;
+  }
+
+  .inner {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  .navLinks li a {
+    font-size: 18px;
+  }
+}
+
+/* Large desktops */
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .inner {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+/* Extra large desktops */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .inner {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .inner {
+    padding-left: 250px;
+    padding-right: 250px;
   }
 }

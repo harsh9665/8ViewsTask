@@ -44,7 +44,31 @@
 
 @media (min-width: 1280px) {
   .section {
-    height: 1212px;
+    /* Prevent oversized empty vertical space on short laptop screens. */
+    min-height: auto;
+    height: auto;
+    padding: clamp(96px, 8vw, 150px) clamp(48px, 8vw, 156px);
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .section {
+    min-height: auto;
+    padding: 96px 48px;
+  }
+}
+
+/* Standard desktops */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .section {
+    padding: 110px 64px;
+  }
+}
+
+/* Full HD and above */
+@media (min-width: 1920px) {
+  .section {
     padding: 150px 156px;
   }
 }
