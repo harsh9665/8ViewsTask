@@ -1,20 +1,13 @@
 import styles from '@/styles/QuoteSection.module.css';
-import Image from 'next/image';
 
 export default function QuoteSection() {
   return (
-    <section className={styles.quoteSection}>
+    <section id="quote-section" className={styles.quoteSection}>
+      <div className={styles.inner}>
+        <span className={styles.quoteMark} aria-hidden="true">
+          “”
+        </span>
 
-      {/* Decorative Quote */}
-      <Image
-        src="/images/quotes.png"
-        alt="Quotes"
-        width={83}
-        height={77}
-        className={styles.quoteMark}
-      />
-
-      <div className={`${styles.inner} container`}>
         <div className={styles.quoteContent}>
           <p className={styles.quoteText}>
             We work at the intersection of architectural design, construction
@@ -28,7 +21,6 @@ export default function QuoteSection() {
           </div>
         </div>
       </div>
-
     </section>
-  )
+  );
 }

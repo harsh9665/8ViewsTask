@@ -101,6 +101,15 @@ font-family: var(--font-inter), 'Inter', sans-serif;/* added */
   padding: 14px 32px;
 }
 
+.btn.outlineGold {
+  width: 160px;
+  height: 50px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
 /* added button — 56px height size matching Figma */
 .hero {
   font-size: 18px; /* added — was 12px */

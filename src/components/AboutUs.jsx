@@ -12,10 +12,7 @@ export default function AboutUs() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect(); // trigger once only
-        }
+        setVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
     );
@@ -25,7 +22,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <section className={styles.section}>
+    <section id="about" className={styles.section}>
       <div className={styles.inner}>
 
         {/* ── Left — Text content ── */}
@@ -47,18 +44,19 @@ export default function AboutUs() {
           </Button>
         </div>
 
-        {/* ── Right — Image slides in from right ── */}
         <div
           ref={imageRef}
           className={`${styles.rightCol} ${visible ? styles.visible : ''}`}
         >
-          <Image
-            src="/images/aboutus.png"
-            alt="About E-Infra"
-             style={{ objectFit: 'cover' }}
-             fill
-            className={styles.image}
-          />
+          <div className={styles.imageReveal}>
+            <Image
+              src="/images/aboutus.png"
+              alt="About E-Infra"
+              fill
+              sizes="(max-width: 768px) 100vw, 820px"
+              className={styles.image}
+            />
+          </div>
         </div>
 
       </div>

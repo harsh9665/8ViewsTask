@@ -17,7 +17,7 @@ export default function ClientReviews() {
   const next = () => canNext && setCurrent((c) => c + 1);
 
   return (
-    <section className={styles.section}>
+    <section id="client-reviews" className={styles.section}>
 
       {/* ── Title ── */}
       <h2 className={styles.title}>Our Client Reviews</h2>

@@ -1,45 +1,48 @@
 .quoteSection {
-  display: flex;
-  background-color: #FFF8EF;
   width: 100%;
-  padding: 113px 250px;
-  position: relative;
+  background-color: #fff8ef;
+  padding: 64px 24px;
+  box-sizing: border-box;
 }
 
 .inner {
-  display: flex;
-  justify-content: center;
-}
-
-/* Big decorative quote marks on the left */
-.quoteMark {
-  position: absolute;
-  top: 113px;
-  left: 250px;
-}
-
-/* Right side: text + brand */
-.quoteContent {
+  width: 100%;
+  max-width: 1415px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  max-width: 960px;
-  margin-left: 320px;
-  margin-top: -20px;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.quoteMark {
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 80%;
+  color: #212121;
+}
+
+.quoteContent {
   width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
 }
 
 .quoteText {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 500;
-  font-size: 56px;
-  line-height: 1;
-  letter-spacing: 0;
-  color: #212121;
   margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 36px;
+  color: #212121;
 }
 
-/* E-INFRA label row */
 .brand {
   display: flex;
   flex-direction: row;
@@ -48,48 +51,60 @@
 }
 
 .brandDot {
-  display: inline-block;
   width: 10px;
-  padding: 5px;
   height: 10px;
   border-radius: 50%;
-  background-color: #C78800;
-  /* golden/amber */
+  background-color: #c78800;
   flex-shrink: 0;
 }
 
 .brandName {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  padding: 5px;
   font-size: 16px;
-  letter-spacing: 0.1em;
-  color: #C78800;
-  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 20px;
+  color: #c78800;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
+@media (min-width: 768px) {
   .quoteSection {
-    padding: 60px 60px;
+    padding: 80px 48px;
+  }
+
+  .quoteMark {
+    font-size: 96px;
   }
 
   .quoteText {
-    font-size: 42px;
+    font-size: 40px;
+    line-height: 52px;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1280px) {
   .quoteSection {
-    padding: 48px 24px;
+    padding-top: 113px;
+    padding-bottom: 112px;
   }
 
   .inner {
-    flex-direction: column;
-    gap: 24px;
+    flex-direction: row;
+    gap: 372px;
+  }
+
+  .quoteMark {
+    width: 83px;
+    min-width: 83px;
+    height: 77px;
+    margin-top: 20px;
+  }
+
+  .quoteContent {
+    gap: 40px;
   }
 
   .quoteText {
-    font-size: 28px;
+    font-size: 56px;
+    line-height: 71px;
   }
 }

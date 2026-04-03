@@ -1,4 +1,6 @@
 .section {
+  position: relative;
+  z-index: 30;
   width: 100%;
   background-color: #FFF8EF;
   padding: 80px 0;
