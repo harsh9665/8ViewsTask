@@ -6,19 +6,28 @@ import ProjectCard from '@/components/ProjectCard';
 import { ourProjects } from '@/data/siteData';
 import styles from '@/styles/OurProjects.module.css';
 
+const fallbackScrollStep = 720;
+
 export default function OurProjects() {
   const sliderRef = useRef(null);
 
+  const getScrollStep = () => {
+    const slider = sliderRef.current;
+    if (!slider) return fallbackScrollStep;
+
+    const card = slider.querySelector('[data-project-card="true"]');
+    const track = slider.firstElementChild;
+    const trackStyle = track ? window.getComputedStyle(track) : null;
+    const gap = Number.parseFloat(
+      trackStyle?.columnGap || trackStyle?.gap || '0'
+    );
+
+    return card ? card.getBoundingClientRect().width + gap : fallbackScrollStep;
+  };
+
   const scrollProjects = (direction) => {
-    if (!sliderRef.current) return;
-
-    const card = sliderRef.current.querySelector('[data-project-card="true"]');
-    const styles = window.getComputedStyle(sliderRef.current.firstElementChild);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0');
-    const cardStep = card ? card.getBoundingClientRect().width + gap : 720;
-
-    sliderRef.current.scrollBy({
-      left: direction * cardStep,
+    sliderRef.current?.scrollBy({
+      left: direction * getScrollStep(),
       behavior: 'smooth',
     });
   };
@@ -30,10 +39,10 @@ export default function OurProjects() {
           <div className={styles.textGroup}>
             <h2 className={styles.title}>Our Projects</h2>
             <p className={styles.description}>
-              we create refined, functionalspaces here aesthetics meet purpose.
-              Each project is a dialogue between form and feeling - crfted with
-              precision, shaped by context, and inspired by timeless design
-              principles.
+              We create refined, functional spaces where aesthetics meet
+              purpose. Each project is a dialogue between form and feeling -
+              crafted with precision, shaped by context, and inspired by
+              timeless design principles.
             </p>
           </div>
 
@@ -51,7 +60,10 @@ export default function OurProjects() {
             </div>
           </div>
 
-          <div className={styles.arrowRow} aria-label="Project carousel controls">
+          <div
+            className={styles.arrowRow}
+            aria-label="Project carousel controls"
+          >
             <button
               type="button"
               className={styles.arrowBtn}

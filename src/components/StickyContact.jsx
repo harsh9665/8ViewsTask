@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from '@/styles/StickyContact.module.css';
+import { classNames } from '@/utils/classNames';
 
 export default function StickyContact() {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,12 +25,10 @@ export default function StickyContact() {
     };
   }, []);
 
-  const wrapClassName = [
+  const wrapClassName = classNames(
     styles.stickyWrap,
-    !isVisible && styles.hidden,
-  ]
-    .filter(Boolean)
-    .join(' ');
+    !isVisible && styles.hidden
+  );
 
   return (
     <div className={wrapClassName}>

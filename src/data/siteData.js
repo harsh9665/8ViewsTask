@@ -1,8 +1,10 @@
-// ─────────────────────────────────────────
-//  src/data/siteData.js
-//  Single source of truth for all static data
-//  Easy to replace with API/DB calls later
-// ─────────────────────────────────────────
+// Single source of truth for static website content.
+
+export const navbarLinks = [
+  { label: 'PROJECTS', href: '#our-projects' },
+  { label: 'GALLERY', href: '#gallery' },
+  { label: 'CONTACT US', href: '#contact' },
+];
 
 export const featuredProjects = [
   {
@@ -10,7 +12,7 @@ export const featuredProjects = [
     label: 'FEATURED PROJECTS-01',
     title: 'LACASA VILLA',
     description:
-      'We create refined, functional spaces where aesthetics meet purpose. Each project is a dialogue between form and feeling — crafted with precision, shaped by context, and inspired by timeless design principles.',
+      'We create refined, functional spaces where aesthetics meet purpose. Each project is a dialogue between form and feeling - crafted with precision, shaped by context, and inspired by timeless design principles.',
     tags: ['Hyderabad', '2025', 'Residential'],
     image: '/images/lacasa-villa.png',
     overlayColor: 'rgba(33,33,33,0.60)',
@@ -90,9 +92,9 @@ export const services = [
 ];
 
 export const stats = [
-  { number: '20+',   label: 'Years of Experience' },
+  { number: '20+', label: 'Years of Experience' },
   { number: '1500+', label: 'Satisfied Home Owners' },
-  { number: '30+',   label: 'Projects Completed' },
+  { number: '30+', label: 'Projects Completed' },
 ];
 
 export const newsItems = [
@@ -123,31 +125,36 @@ export const clientReviews = [
   {
     id: 1,
     project: 'Skyline Heights',
-    review: '"Living in Skyline Heights has been a dream come true. The views are absolutely breathtaking, and the modern amenities make every day feel luxurious. The location in Gachibowli is perfect — close to everything yet peaceful. Highly recommend this place!"',
+    review:
+      '"Living in Skyline Heights has been a dream come true. The views are absolutely breathtaking, and the modern amenities make every day feel luxurious. The location in Gachibowli is perfect - close to everything yet peaceful. Highly recommend this place!"',
     author: 'Ravi Kumar, Resident',
   },
   {
     id: 2,
     project: 'Green Park Towers',
-    review: '"As an eco-conscious buyer, Green Park Towers was exactly what I was looking for. The blend of modern design and sustainable features made it an easy choice. I feel good knowing that my home is energy-efficient, and the community is equally forward-thinking."',
+    review:
+      '"As an eco-conscious buyer, Green Park Towers was exactly what I was looking for. The blend of modern design and sustainable features made it an easy choice. I feel good knowing that my home is energy-efficient, and the community is equally forward-thinking."',
     author: 'Suresh Reddy, Resident',
   },
   {
     id: 3,
     project: 'Sapphire Residences',
-    review: '"From the first visit, I knew Sapphire Residences was special. The luxurious interiors, amazing amenities, and prime location exceeded my expectations. It\'s more than a home — it\'s a lifestyle."',
+    review:
+      '"From the first visit, I knew Sapphire Residences was special. The luxurious interiors, amazing amenities, and prime location exceeded my expectations. It\'s more than a home - it\'s a lifestyle."',
     author: 'Priya Desai, Resident',
   },
   {
     id: 4,
     project: 'The Corporate Hub',
-    review: '"The Corporate Hub was a game-changer for our business. The space is not only visually impressive but also strategically located. It provides the perfect environment for our team to collaborate and innovate."',
+    review:
+      '"The Corporate Hub was a game-changer for our business. The space is not only visually impressive but also strategically located. It provides the perfect environment for our team to collaborate and innovate."',
     author: 'Prakash Mehta, CEO of Tech Innovations Pvt. Ltd.',
   },
   {
     id: 5,
     project: 'The Villas at Maple Grove',
-    review: '"The Villas at Maple Grove offered the perfect balance of elegance and serenity. The quiet neighborhood and expansive design make it the ideal sanctuary. I couldn\'t be happier!"',
+    review:
+      '"The Villas at Maple Grove offered the perfect balance of elegance and serenity. The quiet neighborhood and expansive design make it the ideal sanctuary. I couldn\'t be happier!"',
     author: 'Anjali Sharma, Villa Owner',
   },
 ];

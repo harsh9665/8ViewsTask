@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/Button';
 import styles from '@/styles/AboutUs.module.css';
+import { classNames } from '@/utils/classNames';
 
 export default function AboutUs() {
   const imageRef = useRef(null);
@@ -11,9 +12,7 @@ export default function AboutUs() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVisible(entry.isIntersecting);
-      },
+      ([entry]) => setVisible(entry.isIntersecting),
       { threshold: 0.2 }
     );
 
@@ -24,21 +23,19 @@ export default function AboutUs() {
   return (
     <section id="about" className={styles.section}>
       <div className={styles.inner}>
-
-        {/* ── Left — Text content ── */}
         <div className={styles.leftCol}>
-
           <div className={styles.FirstColGroup}>
-          <h2 className={styles.title}>About us</h2>
-          <p className={styles.description}>
-            E-Infra is a premier real estate developer in Hyderabad, with over 20
-            years of expertise in crafting exceptional residential and commercial
-            spaces. We are committed to delivering quality, innovation, and
-            sustainability in every project. Our approach focuses on creating
-            spaces that enhance lifestyles, offering modern designs and world-class
-            amenities.
-          </p>
+            <h2 className={styles.title}>About us</h2>
+            <p className={styles.description}>
+              E-Infra is a premier real estate developer in Hyderabad, with
+              over 20 years of expertise in crafting exceptional residential
+              and commercial spaces. We are committed to delivering quality,
+              innovation, and sustainability in every project. Our approach
+              focuses on creating spaces that enhance lifestyles, offering
+              modern designs and world-class amenities.
+            </p>
           </div>
+
           <Button variant="outlineGold" size="md" href="#about">
             KNOW MORE
           </Button>
@@ -46,7 +43,7 @@ export default function AboutUs() {
 
         <div
           ref={imageRef}
-          className={`${styles.rightCol} ${visible ? styles.visible : ''}`}
+          className={classNames(styles.rightCol, visible && styles.visible)}
         >
           <div className={styles.imageReveal}>
             <Image
@@ -58,7 +55,6 @@ export default function AboutUs() {
             />
           </div>
         </div>
-
       </div>
     </section>
   );

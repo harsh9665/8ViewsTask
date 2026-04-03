@@ -2,14 +2,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease,
-              border-color 0.25s ease, transform 0.1s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.1s ease;
   white-space: nowrap;
   border: none;
   outline: none;
@@ -19,12 +22,12 @@
   transform: scale(0.97);
 }
 
-/* ── Variants ── */
+/* -- Variants -- */
 .outline {
   background: rgba(249, 249, 249, 0.2); /* added — was transparent */
-  border: 1px solid #F9F9F9; /* added — was #ffffff */
-  color: #F9F9F9;
-font-family: var(--font-inter), 'Inter', sans-serif;/* added */
+  border: 1px solid #f9f9f9; /* added — was #ffffff */
+  color: #f9f9f9;
+  font-family: var(--font-inter), "Inter", sans-serif; /* added */
   font-weight: 600; /* added */
   height: 56px;
   width: 229px;
@@ -35,17 +38,15 @@ font-family: var(--font-inter), 'Inter', sans-serif;/* added */
   color: #ffffff;
 }
 
-
 .solid {
-  background: #C9A84C;
-  border: 1px solid #C9A84C;
+  background: #c9a84c;
+  border: 1px solid #c9a84c;
   color: #ffffff;
 }
 .solid:hover {
   background: #a87200;
   border-color: #a87200;
 }
-
 
 /* About Us button */
 .outlineGold {
@@ -69,15 +70,15 @@ font-family: var(--font-inter), 'Inter', sans-serif;/* added */
 
 /* added — white filled button for Hero section*/
 .solidWhite {
-  background: #F9F9F9;
-  border: 1px solid #F9F9F9;
+  background: #f9f9f9;
+  border: 1px solid #f9f9f9;
   color: #212121;
-  font-family: 'Inter', sans-serif; /* added */
+  font-family: "Inter", sans-serif; /* added */
   font-weight: 600; /* added */
 }
 .solidWhite:hover {
-  background: #C9A84C;
-  border-color: #C9A84C;
+  background: #c9a84c;
+  border-color: #c9a84c;
   color: #ffffff;
 }
 
@@ -90,7 +91,7 @@ font-family: var(--font-inter), 'Inter', sans-serif;/* added */
   border-color: #ffffff;
 }
 
-/* ── Sizes ── */
+/* -- Sizes -- */
 .sm {
   font-size: 11px;
   padding: 10px 20px;

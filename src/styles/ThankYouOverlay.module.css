@@ -38,7 +38,7 @@
 .eyebrow {
   display: block;
   margin-bottom: 18px;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -47,7 +47,7 @@
 
 .heading {
   margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: clamp(32px, 4vw, 56px);
   font-weight: 600;
   line-height: 1;
@@ -57,7 +57,7 @@
 .message {
   margin: 18px auto 0;
   max-width: 450px;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
@@ -65,13 +65,21 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes cardIn {

@@ -10,6 +10,8 @@ import styles from '@/styles/NewsUpdates.module.css';
 
 export default function NewsUpdates() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <section className={styles.section}>
@@ -20,7 +22,7 @@ export default function NewsUpdates() {
           <button
             type="button"
             className={styles.viewAll}
-            onClick={() => setIsModalOpen(true)}
+            onClick={openModal}
           >
             VIEW ALL
           </button>
@@ -62,13 +64,10 @@ export default function NewsUpdates() {
 
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={closeModal}
         title="News & Updates"
       >
-        <ContactForm
-          source="news_updates"
-          onSuccess={() => setIsModalOpen(false)}
-        />
+        <ContactForm source="news_updates" onSuccess={closeModal} />
       </Modal>
     </section>
   );

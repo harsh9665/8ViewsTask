@@ -3,31 +3,25 @@
 import { useEffect, useId } from 'react';
 import styles from '@/styles/Modal.module.css';
 
-/**
- * Generic reusable modal.
- * Props:
- * - isOpen {boolean}
- * - onClose {function}
- * - title {string}
- * - children {React.ReactNode}
- */
 export default function Modal({ isOpen, onClose, title, children }) {
   const titleId = useId();
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleKey = (event) => {
+    const handleKeyDown = (event) => {
       if (event.key === 'Escape') onClose();
     };
 
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = isOpen ? 'hidden' : previousOverflow;
+    document.body.style.overflow = 'hidden';
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -36,11 +30,13 @@ export default function Modal({ isOpen, onClose, title, children }) {
 
   if (!isOpen) return null;
 
+  const stopModalClick = (event) => event.stopPropagation();
+
   return (
     <div className={styles.backdrop} onClick={onClose} role="presentation">
       <div
         className={styles.modal}
-        onClick={(event) => event.stopPropagation()}
+        onClick={stopModalClick}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}

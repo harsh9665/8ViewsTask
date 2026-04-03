@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Button from '@/components/Button';
 import { useOverlay } from '@/context/OverlayContext';
+import { classNames } from '@/utils/classNames';
 import { hasErrors, validateContactForm } from '@/utils/validators';
 import styles from '@/styles/ContactForm.module.css';
 
@@ -21,8 +22,26 @@ const fields = [
     type: 'tel',
     placeholder: 'Mobile number',
     maxLength: 10,
+    inputMode: 'numeric',
+    pattern: '[0-9]*',
   },
 ];
+
+const submitDelayMs = 4000;
+
+const getOverlayConfig = (result) =>
+  result.status === 'duplicate'
+    ? {
+        heading: "You're already in our system",
+        message:
+          result.message ||
+          'We already have your enquiry. Our team will get back to you shortly.',
+      }
+    : {
+        heading: 'Thank you',
+        message:
+          "We've received your enquiry. Our team will contact you shortly.",
+      };
 
 export default function ContactForm({ onSuccess, source = 'contact_section' }) {
   const [formData, setFormData] = useState(initialForm);
@@ -31,11 +50,7 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
   const { showOverlay } = useOverlay();
   const isSubmitting = status === 'loading';
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    if (name === 'mobile' && !/^[0-9]*$/.test(value)) return;
-
+  const updateField = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (errors[name]) {
@@ -43,11 +58,20 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
     }
   };
 
+  const validateField = (name, value) => {
+    const fieldErrors = validateContactForm({ ...formData, [name]: value });
+    setErrors((prev) => ({ ...prev, [name]: fieldErrors[name] || null }));
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === 'mobile' && !/^[0-9]*$/.test(value)) return;
+    updateField(name, value);
+  };
+
   const handleBlur = (event) => {
     const { name, value } = event.target;
-    const fieldErrors = validateContactForm({ ...formData, [name]: value });
-
-    setErrors((prev) => ({ ...prev, [name]: fieldErrors[name] || null }));
+    validateField(name, value);
   };
 
   const handleSubmit = async (event) => {
@@ -69,7 +93,7 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...formData, source }),
         }),
-        new Promise((resolve) => setTimeout(resolve, 4000)),
+        new Promise((resolve) => setTimeout(resolve, submitDelayMs)),
       ]);
 
       const result = await response.json().catch(() => ({}));
@@ -79,18 +103,7 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
         return;
       }
 
-      showOverlay(
-        result.status === 'duplicate'
-          ? {
-              heading: "You're already in our system",
-              message: result.message || 'We already have your enquiry. Our team will get back to you shortly.',
-            }
-          : {
-              heading: 'Thank you',
-              message: "We've received your enquiry. Our team will contact you shortly.",
-            }
-      );
-
+      showOverlay(getOverlayConfig(result));
       setStatus('success');
       setFormData(initialForm);
       setErrors({});
@@ -103,15 +116,13 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className={styles.fieldsStack}>
-        {fields.map(({ name, type, placeholder, maxLength }) => (
+        {fields.map(({ name, type, placeholder, maxLength, inputMode, pattern }) => (
           <div key={name} className={styles.fieldGroup}>
             <input
-              className={[
+              className={classNames(
                 styles.input,
-                errors[name] ? styles.inputError : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
+                errors[name] && styles.inputError
+              )}
               type={type}
               name={name}
               placeholder={placeholder}
@@ -119,8 +130,8 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
               onChange={handleChange}
               onBlur={handleBlur}
               maxLength={maxLength}
-              inputMode={name === 'mobile' ? 'numeric' : undefined}
-              pattern={name === 'mobile' ? '[0-9]*' : undefined}
+              inputMode={inputMode}
+              pattern={pattern}
               disabled={isSubmitting}
             />
 
@@ -132,13 +143,11 @@ export default function ContactForm({ onSuccess, source = 'contact_section' }) {
 
         <div className={styles.fieldGroup}>
           <textarea
-            className={[
+            className={classNames(
               styles.input,
               styles.textarea,
-              errors.message ? styles.inputError : '',
-            ]
-              .filter(Boolean)
-              .join(' ')}
+              errors.message && styles.inputError
+            )}
             name="message"
             placeholder="Your message"
             value={formData.message}

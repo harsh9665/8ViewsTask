@@ -8,6 +8,8 @@ import styles from '@/styles/ClientReviews.module.css';
 
 export default function ClientReviews() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <section id="client-reviews" className={styles.section}>
@@ -31,20 +33,17 @@ export default function ClientReviews() {
       <button
         type="button"
         className={styles.viewAll}
-        onClick={() => setIsModalOpen(true)}
+        onClick={openModal}
       >
         VIEW ALL
       </button>
 
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={closeModal}
         title="Client Reviews"
       >
-        <ContactForm
-          source="client_reviews"
-          onSuccess={() => setIsModalOpen(false)}
-        />
+        <ContactForm source="client_reviews" onSuccess={closeModal} />
       </Modal>
     </section>
   );

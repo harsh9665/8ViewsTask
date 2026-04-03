@@ -1,4 +1,4 @@
-/* ── Navbar wrapper ── */
+/* -- Navbar wrapper -- */
 .navbar {
   position: fixed;
   top: 0;
@@ -10,26 +10,29 @@
   border-bottom: 1px solid #717171;
 }
 
-/* ── Show / Hide on scroll ── */
+/* -- Show / Hide on scroll -- */
 .navVisible {
   transform: translateY(0);
-  transition: transform 0.4s ease, background 0.3s ease;
+  transition:
+    transform 0.4s ease,
+    background 0.3s ease;
 }
 
 .navHidden {
   transform: translateY(-100%);
-  transition: transform 0.4s ease, background 0.3s ease;
+  transition:
+    transform 0.4s ease,
+    background 0.3s ease;
 }
 
-/* ── Dark bg when scrolled back up past hero ── */
+/* -- Dark bg when scrolled back up past hero -- */
 .navbar.scrolled {
   background: rgba(33, 33, 33, 0.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-
-/* ── Inner container ── */
+/* -- Inner container -- */
 .inner {
   position: relative;
   width: 100%;
@@ -41,7 +44,7 @@
   padding-right: clamp(48px, 13vw, 250px);
 }
 
-/* ── Logo group (155×45) ── */
+/* -- Logo group (155x45) -- */
 .logo {
   display: flex;
   align-items: center;
@@ -50,15 +53,15 @@
   height: 45px;
 }
 
-/* ── Right side: nav links + hamburger ── */
+/* -- Right side: nav links + hamburger -- */
 .right {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 40px;           /* gap between ul and hamburger — from Figma Frame 34 */
+  gap: 40px; /* gap between ul and hamburger — from Figma Frame 34 */
 }
 
-/* ── Nav links list (Frame 32) ── */
+/* -- Nav links list (Frame 32) -- */
 .navLinks {
   display: flex;
   flex-direction: row;
@@ -66,29 +69,29 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 36px;           /* from Figma Frame 32 gap: 36px */
+  gap: 36px; /* from Figma Frame 32 gap: 36px */
 }
 
-/* ── Each nav link ── */
+/* -- Each nav link -- */
 .navLinks li a {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   text-align: center;
   text-transform: uppercase;
-  color: #F9F9F9;
+  color: #f9f9f9;
   text-decoration: none;
   transition: color 0.2s ease;
   white-space: nowrap;
 }
 
 .navLinks li a:hover {
-  color: #C9A84C;
+  color: #c9a84c;
 }
 
-/* ── Hamburger button (40×40) ── */
+/* -- Hamburger button (40x40) -- */
 .hamburger {
   width: 40px;
   height: 40px;
@@ -107,15 +110,23 @@
   display: block;
   width: 24px;
   height: 2px;
-  background-color: #F9F9F9;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  background-color: #f9f9f9;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
-.barOpen1 { transform: translateY(7px) rotate(45deg); }
-.barOpen2 { opacity: 0; }
-.barOpen3 { transform: translateY(-7px) rotate(-45deg); }
+.barOpen1 {
+  transform: translateY(7px) rotate(45deg);
+}
+.barOpen2 {
+  opacity: 0;
+}
+.barOpen3 {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
-/* ── Mobile menu ── */
+/* -- Mobile menu -- */
 .mobileMenu {
   background: rgba(33, 33, 33, 0.92);
   backdrop-filter: blur(10px);
@@ -138,20 +149,22 @@
 .mobileMenu ul li a {
   display: block;
   padding: 18px 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #F9F9F9;
+  color: #f9f9f9;
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: color 0.2s ease, padding-left 0.2s ease;
+  transition:
+    color 0.2s ease,
+    padding-left 0.2s ease;
 }
 
 .mobileMenu ul li a:hover {
-  color: #C9A84C;
+  color: #c9a84c;
   padding-left: 8px;
 }
 
@@ -159,7 +172,7 @@
   border-bottom: 0;
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 1024px) {
   .inner {
     padding-left: 48px;

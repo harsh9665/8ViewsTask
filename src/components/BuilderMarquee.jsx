@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import styles from '@/styles/Builders.module.css';
+import { classNames } from '@/utils/classNames';
+
+const marqueeCopies = [0, 1];
 
 export default function BuilderMarquee({
   imageSrc,
@@ -9,17 +12,16 @@ export default function BuilderMarquee({
 }) {
   return (
     <section
-      className={[styles.buildersSection, sectionClassName]
-        .filter(Boolean)
-        .join(' ')}
+      className={classNames(styles.buildersSection, sectionClassName)}
     >
       <div className={styles.marqueeWrapper}>
         <div
-          className={[styles.marqueeTrack, reverse ? styles.reverseTrack : '']
-            .filter(Boolean)
-            .join(' ')}
+          className={classNames(
+            styles.marqueeTrack,
+            reverse && styles.reverseTrack
+          )}
         >
-          {[0, 1].map((item) => (
+          {marqueeCopies.map((item) => (
             <Image
               key={item}
               src={imageSrc}

@@ -2,11 +2,16 @@
 
 import styles from '@/styles/Hero.module.css';
 
-export default function Hero({ onExploreClick, onLetsTalkClick }) {
+export default function Hero({ onLetsTalkClick }) {
+  const handleExploreClick = () => {
+    document.getElementById('featured-projects')?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
   return (
     <section className={styles.hero} id="home">
-
-      {/* Video Background */}
       <video
         className={styles.videoBg}
         autoPlay
@@ -18,13 +23,12 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
         <source src="/videos/0_Loft_Interior_3840x2160.mp4" type="video/mp4" />
       </video>
 
-      {/* Gradient Overlay */}
       <div className={styles.overlay} />
 
-      {/* Hero Content — no Bootstrap container, we use padding-left: 250px */}
       <div className={styles.content}>
         <h1 className={styles.heading}>
-          REMARKABLE SPACES,<br />
+          REMARKABLE SPACES,
+          <br />
           GUIDED BY LIFESTYLE
         </h1>
 
@@ -32,21 +36,20 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
           <button
             type="button"
             className={styles.btnOutline}
-            onClick={() => {
-              document.getElementById('featured-projects')?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-              });
-            }}
+            onClick={handleExploreClick}
           >
             EXPLORE PROJECTS
           </button>
-          <button type="button" className={styles.btnFilled} onClick={onLetsTalkClick}>
+
+          <button
+            type="button"
+            className={styles.btnFilled}
+            onClick={onLetsTalkClick}
+          >
             LET&apos;S TALK
           </button>
         </div>
       </div>
-
     </section>
   );
 }

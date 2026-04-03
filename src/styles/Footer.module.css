@@ -3,7 +3,6 @@
   background: var(--color-dark-surface);
 }
 
-
 .body {
   width: 100%;
   box-sizing: border-box;
@@ -39,8 +38,7 @@
 .contactLink,
 .followText,
 .socialLink {
-  
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 16px;
   line-height: 1.2;
   color: var(--color-white-soft);
@@ -71,16 +69,15 @@
 }
 
 .address {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  width: 100%;
+  display: inline-block; /* let the icon flow directly after the final text line */
+  width: min(100%, 380px);
+  line-height: 1.2;
 }
 
 .addressText {
-  flex: 1 1 auto;
-  min-width: 0;
-  width: min(100%, 340px);
+  display: inline; /* keep text and icon in one inline text flow */
+  width: auto;
+  max-width: none;
 }
 
 .contactLinks {
@@ -108,14 +105,17 @@
 }
 
 .arrowIcon {
-  flex: 0 0 24px;
   width: 24px;
   height: 24px;
+  flex: 0 0 24px;
   color: var(--color-white-soft);
 }
 
 .address .arrowIcon {
-  margin-top: 2px;
+  display: inline-block; /* place arrow immediately after text instead of at the flex row end */
+  margin-left: 6px;
+  margin-bottom: -4px;
+  vertical-align: baseline;
 }
 
 .navLink:hover,
@@ -146,7 +146,7 @@
 .copyright,
 .legalText {
   margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
@@ -170,7 +170,6 @@
   .followText,
   .socialLink {
     font-size: 18px;
-    line-height: 1.2;
   }
 
   .bottomBar {
@@ -195,7 +194,10 @@
 
   .columns {
     width: min(820px, 100%);
+    display: flex; /* simple 3-column footer layout using flex */
     flex-wrap: nowrap;
+    align-items: start;
+    justify-content: space-between;
     gap: clamp(40px, 5vw, 99px);
   }
 
@@ -205,7 +207,6 @@
   }
 
   .navLink,
-  .address,
   .contactLink,
   .followText,
   .socialLink {
@@ -214,15 +215,31 @@
   }
 
   .address {
+    font-size: 20px;
     line-height: 24px;
   }
 
   .contactCol {
+    width: 380px; /* keep address + email block aligned consistently on desktop */
     gap: 56px;
+  }
+
+  .socialCol {
+    width: 122px;
+    flex: 0 0 122px;
   }
 
   .bottomBar {
     padding: 20px clamp(48px, 13vw, 250px);
+  }
+}
+
+@media (max-width: 767px) {
+  .address .arrowIcon {
+    width: 24px; /* keep same icon size as Instagram/LinkedIn arrows */
+    height: 24px;
+    margin-left: 4px;
+    margin-bottom: -6px; /* align with the last address line baseline on mobile */
   }
 }
 
@@ -239,6 +256,10 @@
   .columns {
     flex-wrap: nowrap;
     gap: 48px;
+  }
+
+  .socialCol {
+    flex: 0 0 122px;
   }
 
   .bottomBar {

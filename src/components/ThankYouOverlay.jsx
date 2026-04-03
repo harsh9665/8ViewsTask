@@ -1,16 +1,31 @@
 'use client';
 
 import styles from '@/styles/ThankYouOverlay.module.css';
+import { classNames } from '@/utils/classNames';
 
-export default function ThankYouOverlay({ heading, message, isClosing, onClose }) {
+export default function ThankYouOverlay({
+  heading,
+  message,
+  isClosing,
+  onClose,
+}) {
+  const backdropClassName = classNames(
+    styles.backdrop,
+    isClosing ? styles.fadeOut : styles.fadeIn
+  );
+  const cardClassName = classNames(
+    styles.card,
+    isClosing ? styles.cardOut : styles.cardIn
+  );
+
   return (
     <div
-      className={`${styles.backdrop} ${isClosing ? styles.fadeOut : styles.fadeIn}`}
+      className={backdropClassName}
       onClick={onClose}
       role="presentation"
     >
       <section
-        className={`${styles.card} ${isClosing ? styles.cardOut : styles.cardIn}`}
+        className={cardClassName}
         onClick={(event) => event.stopPropagation()}
         role="dialog"
         aria-modal="true"

@@ -18,7 +18,7 @@
 .quoteMark {
   display: flex;
   align-items: flex-end;
-  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-family: var(--font-playfair), "Playfair Display", serif;
   font-size: 72px;
   font-weight: 500;
   line-height: 80%;
@@ -36,7 +36,7 @@
 
 .quoteText {
   margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 28px;
   font-weight: 500;
   line-height: 36px;
@@ -59,7 +59,7 @@
 }
 
 .brandName {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;

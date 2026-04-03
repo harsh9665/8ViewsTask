@@ -1,10 +1,12 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '@/constants/logo.png';
+import { navbarLinks } from '@/data/siteData';
 import styles from '@/styles/Navbar.module.css';
-import { useState, useEffect, useRef } from 'react';
+import { classNames } from '@/utils/classNames';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,22 +17,11 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const heroHeight = window.innerHeight; // hero is 100vh
+      const isInsideHero = currentScrollY < window.innerHeight;
+      const isScrollingUp = currentScrollY < lastScrollY.current;
 
-      if (currentScrollY < heroHeight) {
-        // Inside hero — always show, transparent bg
-        setVisible(true);
-        setScrolled(false);
-      } else if (currentScrollY < lastScrollY.current) {
-        // Past hero, scrolling UP — show with dark bg
-        setVisible(true);
-        setScrolled(true);
-      } else {
-        // Past hero, scrolling DOWN — hide
-        setVisible(false);
-        setScrolled(true);
-      }
-
+      setScrolled(!isInsideHero);
+      setVisible(isInsideHero || isScrollingUp);
       lastScrollY.current = currentScrollY;
     };
 
@@ -38,16 +29,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navClassName = classNames(
+    styles.navbar,
+    scrolled && styles.scrolled,
+    visible ? styles.navVisible : styles.navHidden
+  );
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <nav className={`
-      ${styles.navbar} 
-      ${scrolled ? styles.scrolled : ''} 
-      ${visible ? styles.navVisible : styles.navHidden}
-    `}>
-
+    <nav className={navClassName}>
       <div className={styles.inner}>
-
-        {/* LOGO — 155×45px, left: 250px */}
         <Link href="/" className={styles.logo}>
           <Image
             src={logo}
@@ -59,41 +51,47 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* RIGHT: links + hamburger */}
         <div className={styles.right}>
-
-          {/* Nav links — Inter 500 20px, gap 36px */}
           <ul className={styles.navLinks}>
-            <li><a href="#our-projects">PROJECTS</a></li>
-            <li><a href="#gallery">GALLERY</a></li>
-            <li><a href="#contact">CONTACT US</a></li>
+            {navbarLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
           </ul>
 
-          {/* Hamburger — 40×40px */}
           <button
+            type="button"
             className={styles.hamburger}
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
           >
-            <span className={`${styles.bar} ${menuOpen ? styles.barOpen1 : ''}`}></span>
-            <span className={`${styles.bar} ${menuOpen ? styles.barOpen2 : ''}`}></span>
-            <span className={`${styles.bar} ${menuOpen ? styles.barOpen3 : ''}`}></span>
+            <span
+              className={classNames(styles.bar, menuOpen && styles.barOpen1)}
+            />
+            <span
+              className={classNames(styles.bar, menuOpen && styles.barOpen2)}
+            />
+            <span
+              className={classNames(styles.bar, menuOpen && styles.barOpen3)}
+            />
           </button>
-
         </div>
       </div>
 
-      {/* Mobile dropdown */}
       {menuOpen && (
         <div className={styles.mobileMenu}>
           <ul>
-            <li><a href="#our-projects" onClick={() => setMenuOpen(false)}>PROJECTS</a></li>
-            <li><a href="#gallery" onClick={() => setMenuOpen(false)}>GALLERY</a></li>
-            <li><a href="#contact" onClick={() => setMenuOpen(false)}>CONTACT US</a></li>
+            {navbarLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} onClick={closeMenu}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       )}
-
     </nav>
   );
 }

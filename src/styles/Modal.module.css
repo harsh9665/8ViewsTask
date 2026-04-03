@@ -11,12 +11,16 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal {
-  background-color: #FFF8EF;
+  background-color: #fff8ef;
   width: 100%;
   max-width: 560px;
   max-height: min(90svh, 800px);
@@ -25,8 +29,14 @@
 }
 
 @keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .header {
@@ -34,11 +44,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 28px 32px 20px;
-  border-bottom: 1px solid #EAD6AA;
+  border-bottom: 1px solid #ead6aa;
 }
 
 .title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 22px;
   font-weight: 500;
   color: #212121;
@@ -65,9 +75,19 @@
 }
 
 @media (max-width: 640px) {
-  .backdrop { padding: 16px; }
-  .modal { max-height: calc(100svh - 32px); }
-  .header { padding: 20px 24px 16px; }
-  .body   { padding: 20px 24px 24px; }
-  .title  { font-size: 18px; }
+  .backdrop {
+    padding: 16px;
+  }
+  .modal {
+    max-height: calc(100svh - 32px);
+  }
+  .header {
+    padding: 20px 24px 16px;
+  }
+  .body {
+    padding: 20px 24px 24px;
+  }
+  .title {
+    font-size: 18px;
+  }
 }

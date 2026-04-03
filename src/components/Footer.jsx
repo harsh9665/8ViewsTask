@@ -35,8 +35,8 @@ export default function Footer() {
               <span className={styles.addressText}>
                 Plot No:32, Sy No:135, Brindavan Colony Gandipet road, RR Dist.
                 Hyderabad- 500075 Telangana
+                <ArrowOutwardIcon className={styles.arrowIcon} />
               </span>
-              <ArrowOutwardIcon className={styles.arrowIcon} />
             </a>
 
             <div className={styles.contactLinks}>
