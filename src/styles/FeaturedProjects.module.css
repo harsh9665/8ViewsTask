@@ -1,33 +1,6 @@
 .section {
   position: relative;
+  isolation: isolate;
   width: 100%;
   height: calc(var(--slide-count, 3) * max(100svh, 640px));
-}
-
-@media (min-width: 1280px) {
-  .section {
-    /* On shorter laptops, slides track viewport height instead of forcing 960px. */
-    height: calc(var(--slide-count, 3) * clamp(760px, 100svh, 960px));
-  }
-}
-
-/* Small laptops */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .section {
-    height: calc(var(--slide-count, 3) * 760px);
-  }
-}
-
-/* Standard desktops */
-@media (min-width: 1280px) and (max-width: 1439px) {
-  .section {
-    height: calc(var(--slide-count, 3) * 820px);
-  }
-}
-
-/* Full HD and above */
-@media (min-width: 1920px) {
-  .section {
-    height: calc(var(--slide-count, 3) * 960px);
-  }
 }

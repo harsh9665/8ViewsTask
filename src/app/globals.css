@@ -35,7 +35,10 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+}
+
+html {
+  overflow-x: clip;
 }
 
 body {
@@ -54,7 +57,6 @@ html {
 
 main {
   width: 100%;
-  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {

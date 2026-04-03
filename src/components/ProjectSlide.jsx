@@ -18,7 +18,7 @@ export default function ProjectSlide({
     <article
       className={styles.slide}
       style={{
-        zIndex: index,
+        '--slide-z-index': index,
         '--mobile-image-position': mobileImagePosition,
       }}
     >
