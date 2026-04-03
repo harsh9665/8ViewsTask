@@ -1,67 +1,75 @@
 'use client';
 
-import { useState } from 'react';
-import ProjectCard from '@/components/ProjectCard';
+import { useRef } from 'react';
 import Button from '@/components/Button';
-import styles from '@/styles/OurProjects.module.css';
+import ProjectCard from '@/components/ProjectCard';
 import { ourProjects } from '@/data/siteData';
+import styles from '@/styles/OurProjects.module.css';
 
 export default function OurProjects() {
-  const [startIndex, setStartIndex] = useState(0);
+  const sliderRef = useRef(null);
 
-  const prev = () =>
-    setStartIndex((i) => (i === 0 ? ourProjects.length - 1 : i - 1));
-  const next = () =>
-    setStartIndex((i) => (i === ourProjects.length - 1 ? 0 : i + 1));
+  const scrollProjects = (direction) => {
+    if (!sliderRef.current) return;
 
-  // Show 2 cards starting from startIndex, wrapping around
-  const visibleProjects = [
-    ourProjects[startIndex],
-    ourProjects[(startIndex + 1) % ourProjects.length],
-  ];
+    const card = sliderRef.current.querySelector('[data-project-card="true"]');
+    const styles = window.getComputedStyle(sliderRef.current.firstElementChild);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap || '0');
+    const cardStep = card ? card.getBoundingClientRect().width + gap : 720;
+
+    sliderRef.current.scrollBy({
+      left: direction * cardStep,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section id="OurProjects" className={styles.section}>
-      <div className={styles.inner + ' container'}>
-
-        {/* ── Left — Text ── */}
+      <div className={styles.inner}>
         <div className={styles.leftCol}>
-          <h2 className={styles.title}>Our Projects</h2>
-          <p className={styles.description}>
-            we create refined, functional spaces here aesthetics meet purpose.
-            Each project is a dialogue between form and feeling - crfted with
-            precision, shaped by context, and inspired by timeless design
-            principles.
-          </p>
-          <Button variant="outlineGold" size="md" href="#projects">
+          <div className={styles.textGroup}>
+            <h2 className={styles.title}>Our Projects</h2>
+            <p className={styles.description}>
+              we create refined, functionalspaces here aesthetics meet purpose.
+              Each project is a dialogue between form and feeling - crfted with
+              precision, shaped by context, and inspired by timeless design
+              principles.
+            </p>
+          </div>
+
+          <Button variant="outlineGold" size="md" href="#OurProjects">
             VIEW ALL
           </Button>
         </div>
 
-        {/* ── Right — Cards + Arrows ── */}
         <div className={styles.rightCol}>
-
-          {/* Left arrow */}
-          <button className={`${styles.arrowBtn} ${styles.arrowLeft}`} onClick={prev} aria-label="Previous">
-            ‹
-          </button>
-
-          {/* 2 visible cards */}
-          <div className={styles.cardsStrip}>
-            {visibleProjects.map((project, idx) => (
-              <ProjectCard
-                key={`${project.id}-${startIndex}`}
-                {...project}
-                isActive={idx === 0}
-              />
-            ))}
+          <div ref={sliderRef} className={styles.sliderViewport}>
+            <div className={styles.cardsStrip}>
+              {ourProjects.map((project) => (
+                <ProjectCard key={project.id} {...project} />
+              ))}
+            </div>
           </div>
 
-          {/* Right arrow */}
-          <button className={`${styles.arrowBtn} ${styles.arrowRight}`} onClick={next} aria-label="Next">
-            ›
-          </button>
+          <div className={styles.arrowRow} aria-label="Project carousel controls">
+            <button
+              type="button"
+              className={styles.arrowBtn}
+              onClick={() => scrollProjects(-1)}
+              aria-label="Previous project"
+            >
+              <span className={`${styles.arrowIcon} ${styles.arrowIconLeft}`} />
+            </button>
 
+            <button
+              type="button"
+              className={styles.arrowBtn}
+              onClick={() => scrollProjects(1)}
+              aria-label="Next project"
+            >
+              <span className={styles.arrowIcon} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

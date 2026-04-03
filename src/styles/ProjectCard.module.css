@@ -1,84 +1,122 @@
 .card {
   position: relative;
-  flex: 1;
-  min-width: 0;
-  height: 100%;
+  width: 700px;
+  height: 480px;
+  flex: 0 0 700px;
   overflow: hidden;
-  cursor: pointer;
-  transition: flex 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Active card is wider */
-.card.active {
-  flex: 1.5;
 }
 
 .image {
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s ease;
 }
 
-.card:hover .image {
-  transform: scale(1.03);
-}
-
-/* Dark gradient — stronger at bottom */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.72) 0%,
-    rgba(0, 0, 0, 0.15) 40%,
-    rgba(0, 0, 0, 0.0) 100%
-  );
   z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 42.5%,
+    rgba(15, 15, 15, 0.4) 71.48%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
 }
 
-/* COMPLETED PROJECT badge — top right */
 .badge {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
-  background-color: #CEA446;
-  color: #ffffff;
+  width: 156px;
+  height: 31px;
+  padding: 8px 12px;
+  background: #c78800;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #f9f9f9;
+  text-align: center;
   text-transform: uppercase;
-  padding: 8px 14px;
-  white-space: nowrap;
 }
 
-/* Project name + type — bottom left */
 .info {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  left: 48px;
+  top: 372px;
   z-index: 2;
-  padding: 24px 28px;
+  width: 185px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 .name {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: #ffffff;
   margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 35px;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  color: #fff8ef;
 }
 
 .type {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
   margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #fff8ef;
+}
+
+@media (max-width: 1279px) {
+  .card {
+    width: 520px;
+    height: auto;
+    flex-basis: 520px;
+    aspect-ratio: 700 / 480;
+  }
+
+  .info {
+    left: 32px;
+    top: auto;
+    bottom: 32px;
+    width: 185px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: min(86vw, 340px);
+    flex-basis: min(86vw, 340px);
+  }
+
+  .badge {
+    width: auto;
+    min-width: 126px;
+    height: 24px;
+    padding: 5px 10px;
+    font-size: 9px;
+    line-height: 14px;
+    white-space: nowrap;
+  }
+
+  .info {
+    left: 20px;
+    bottom: 18px;
+    width: calc(100% - 40px);
+    gap: 4px;
+  }
+
+  .name {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .type {
+    font-size: 13px;
+    line-height: 16px;
+  }
 }
