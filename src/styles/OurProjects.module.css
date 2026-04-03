@@ -2,7 +2,7 @@
   width: 100%;
   background: #fff8ef;
   overflow: hidden;
-  --projects-side-padding: clamp(48px, 13vw, 250px);
+  --projects-side-padding: var(--section-padding-x);
 }
 
 .inner {
@@ -52,6 +52,24 @@
   color: #5c5c5c;
 }
 
+.viewAllLabel {
+  width: 160px;
+  height: 50px;
+  border: 1px solid #c78800;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #c78800;
+  text-transform: uppercase;
+  cursor: default;
+  user-select: none;
+}
+
 .rightCol {
   position: absolute;
   left: calc(var(--projects-side-padding) + 600px);
@@ -86,40 +104,43 @@
 .arrowRow {
   position: absolute;
   left: 6px;
-  top: 224px;
-  width: calc(100% - 18px);
+  right: 12px;
+  top: 50%;
+  width: auto;
   height: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
+  transform: translateY(-50%);
 }
 
-.arrowBtn {
+.arrowControl {
   width: 32px;
   height: 32px;
   padding: 2px 6px;
-  border: 0;
   border-radius: 35px;
   background: #f9f9f9;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: #212121;
   cursor: pointer;
   pointer-events: auto;
+  user-select: none;
+  outline: none;
 }
 
-.arrowIcon {
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid #212121;
-  border-bottom: 2px solid #212121;
-  transform: rotate(-45deg);
+.arrowSvg {
+  width: 11px;
+  height: 12px;
+  color: #212121;
+  display: block;
 }
 
-.arrowIconLeft {
-  transform: rotate(135deg);
+.arrowSvgNext {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 1919px) {
@@ -184,8 +205,8 @@
   .arrowRow {
     left: 54px;
     top: 50%;
-    width: calc(100% - 108px);
-    transform: translateY(-50%);
+    right: 54px;
+    width: auto;
   }
 }
 
@@ -213,18 +234,19 @@
 
   .arrowRow {
     left: 28px;
-    width: calc(100% - 56px);
+    right: 28px;
+    width: auto;
   }
 
-  .arrowBtn {
+  .arrowControl {
     width: 28px;
     height: 28px;
-    padding: 2px 5px;
+    padding: 2px 6px;
   }
 
-  .arrowIcon {
-    width: 7px;
-    height: 7px;
+  .arrowSvg {
+    width: 9px;
+    height: 10px;
   }
 }
 
@@ -278,8 +300,8 @@
   .arrowRow {
     left: 54px;
     top: 50%;
-    width: calc(100% - 108px);
-    transform: translateY(-50%);
+    right: 54px;
+    width: auto;
   }
 }
 
@@ -329,8 +351,3 @@
 }
 
 /* Full HD and above */
-@media (min-width: 1920px) {
-  .section {
-    --projects-side-padding: 250px;
-  }
-}

@@ -131,8 +131,8 @@
   .inner {
     max-width: 1920px;
     margin: 0 auto;
-    padding-left: clamp(48px, 13vw, 250px);
-    padding-right: clamp(48px, 13vw, 250px);
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
   }
 
   .rightCol {
@@ -202,9 +202,3 @@
 }
 
 /* Full HD and above */
-@media (min-width: 1920px) {
-  .inner {
-    padding-left: 250px;
-    padding-right: 250px;
-  }
-}

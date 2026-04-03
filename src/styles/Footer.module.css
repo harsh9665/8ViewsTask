@@ -189,7 +189,7 @@
     justify-content: space-between;
     /* Desktop spacing scales down on smaller laptops while preserving the 250px Figma max. */
     gap: clamp(64px, 8vw, 264px);
-    padding: 80px clamp(48px, 13vw, 250px) 120px;
+    padding: 80px var(--section-padding-x) 120px;
   }
 
   .columns {
@@ -230,7 +230,7 @@
   }
 
   .bottomBar {
-    padding: 20px clamp(48px, 13vw, 250px);
+    padding: 20px var(--section-padding-x);
   }
 }
 
@@ -300,11 +300,6 @@
 /* Full HD and above */
 @media (min-width: 1920px) {
   .body {
-    padding: 80px 250px 120px;
     gap: 264px;
-  }
-
-  .bottomBar {
-    padding: 20px 250px;
   }
 }

@@ -40,8 +40,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: clamp(48px, 13vw, 250px);
-  padding-right: clamp(48px, 13vw, 250px);
+  padding-left: var(--section-padding-x);
+  padding-right: var(--section-padding-x);
 }
 
 /* -- Logo group (155x45) -- */
@@ -264,7 +264,7 @@
 /* Full HD and above */
 @media (min-width: 1920px) {
   .inner {
-    padding-left: 250px;
-    padding-right: 250px;
+    padding-left: var(--section-padding-x);
+    padding-right: var(--section-padding-x);
   }
 }

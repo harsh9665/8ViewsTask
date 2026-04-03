@@ -13,6 +13,7 @@
   --color-text-body: #5c5c5c;
   --background: var(--color-page-bg);
   --foreground: var(--color-dark-surface);
+  --section-padding-x: 24px;
 }
 
 @theme inline {
@@ -31,8 +32,10 @@
 
 html,
 body {
+  width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -47,4 +50,39 @@ html {
 
 * {
   box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-padding-x: 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --section-padding-x: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --section-padding-x: 96px;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --section-padding-x: 140px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --section-padding-x: 250px;
+  }
 }

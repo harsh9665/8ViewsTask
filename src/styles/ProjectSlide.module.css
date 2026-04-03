@@ -149,7 +149,7 @@
 
   .content {
     position: absolute;
-    left: clamp(48px, 13vw, 250px);
+    left: var(--section-padding-x);
     top: clamp(180px, 28svh, 341px);
     width: 600px;
   }
@@ -255,7 +255,6 @@
   }
 
   .content {
-    left: 250px;
     top: 341px;
   }
 }

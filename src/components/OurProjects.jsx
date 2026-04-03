@@ -1,12 +1,54 @@
 'use client';
 
 import { useRef } from 'react';
-import Button from '@/components/Button';
 import ProjectCard from '@/components/ProjectCard';
 import { ourProjects } from '@/data/siteData';
+import { classNames } from '@/utils/classNames';
 import styles from '@/styles/OurProjects.module.css';
 
 const fallbackScrollStep = 720;
+
+function ProjectArrowControl({ direction, onClick, label }) {
+  const isPrevious = direction === 'previous';
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onClick();
+    }
+  };
+
+  return (
+    <span
+      role="button"
+      tabIndex={0}
+      className={styles.arrowControl}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      aria-label={label}
+    >
+      <svg
+        className={classNames(
+          styles.arrowSvg,
+          !isPrevious && styles.arrowSvgNext
+        )}
+        width="11"
+        height="12"
+        viewBox="0 0 11 12"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M7.5 1L2.5 6L7.5 11"
+          stroke="#212121"
+          strokeWidth="2"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+        />
+      </svg>
+    </span>
+  );
+}
 
 export default function OurProjects() {
   const sliderRef = useRef(null);
@@ -46,9 +88,7 @@ export default function OurProjects() {
             </p>
           </div>
 
-          <Button variant="outlineGold" size="md" href="#our-projects">
-            VIEW ALL
-          </Button>
+          <span className={styles.viewAllLabel}>VIEW ALL</span>
         </div>
 
         <div className={styles.rightCol}>
@@ -64,23 +104,17 @@ export default function OurProjects() {
             className={styles.arrowRow}
             aria-label="Project carousel controls"
           >
-            <button
-              type="button"
-              className={styles.arrowBtn}
+            <ProjectArrowControl
+              direction="previous"
               onClick={() => scrollProjects(-1)}
-              aria-label="Previous project"
-            >
-              <span className={`${styles.arrowIcon} ${styles.arrowIconLeft}`} />
-            </button>
+              label="Previous project"
+            />
 
-            <button
-              type="button"
-              className={styles.arrowBtn}
+            <ProjectArrowControl
+              direction="next"
               onClick={() => scrollProjects(1)}
-              aria-label="Next project"
-            >
-              <span className={styles.arrowIcon} />
-            </button>
+              label="Next project"
+            />
           </div>
         </div>
       </div>
