@@ -1,6 +1,10 @@
 .section {
   width: 100%;
+  min-height: 100svh;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 72px 24px;
   background: #fff8ef;
 }
@@ -37,7 +41,7 @@
 
 @media (min-width: 1280px) {
   .section {
-    min-height: 912px;
+    min-height: max(100svh, 912px);
     padding: 180px 24px;
   }
 

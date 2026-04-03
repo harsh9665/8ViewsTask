@@ -29,7 +29,15 @@ export default function Hero({ onExploreClick, onLetsTalkClick }) {
         </h1>
 
         <div className={styles.buttons}>
-          <button className={styles.btnOutline} onClick={onExploreClick}>
+          <button
+            className={styles.btnOutline}
+            onClick={() => {
+              document.getElementById('featured-projects')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }}
+          >
             EXPLORE PROJECTS
           </button>
           <button className={styles.btnFilled} onClick={onLetsTalkClick}>

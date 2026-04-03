@@ -9,12 +9,19 @@ export default function ProjectSlide({
   description,
   tags = [],
   image,
+  mobileImagePosition = 'center center',
   overlayColor = 'rgba(33,33,33,0.60)',
   onView,
   index = 0,
 }) {
   return (
-    <article className={styles.slide} style={{ zIndex: index }}>
+    <article
+      className={styles.slide}
+      style={{
+        zIndex: index,
+        '--mobile-image-position': mobileImagePosition,
+      }}
+    >
       <Image
         src={image}
         alt={title}

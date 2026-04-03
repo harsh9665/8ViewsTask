@@ -33,6 +33,7 @@ export const featuredProjects = [
       'A luxury high-rise offering stunning city views and top-tier amenities designed for modern living.',
     tags: ['Hyderabad', '2025', 'Residential'],
     image: '/images/skyline-heights.png',
+    mobileImagePosition: '78% center',
     overlayColor: 'rgba(10,10,20,0.55)',
   },
 ];

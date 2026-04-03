@@ -1,12 +1,17 @@
 .buildersSection {
   width: 100%;
-  background-color: #212121;
-  border-top: 1px solid #949494;
-  border-bottom: 1px solid #949494;
-  overflow: hidden;
-  height: 160px;
+  height: 96px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  background: #212121;
+  border-top: 1px solid #949494;
+  border-bottom: 1px solid #949494;
+}
+
+.compactSection {
+  height: 72px;
 }
 
 .marqueeWrapper {
@@ -15,22 +20,69 @@
 }
 
 .marqueeTrack {
+  width: max-content;
   display: flex;
   align-items: center;
-  gap: 0px;
-  width: max-content;
-  animation: scrollLeft 30s linear infinite;
+  animation: scrollLeft 16s linear infinite;
+  will-change: transform;
 }
 
-.marqueeWrapper:hover .marqueeTrack {
-  animation-play-state: paused;
+.reverseTrack {
+  animation-name: scrollRight;
+}
+
+.logoStrip {
+  width: 1280px;
+  height: auto;
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 @keyframes scrollLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.logoItem {
-  flex-shrink: 0;
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .buildersSection {
+    height: 128px;
+  }
+
+  .compactSection {
+    height: 128px;
+  }
+
+  .logoStrip {
+    width: 1600px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .buildersSection {
+    height: 160px;
+  }
+
+  .compactSection {
+    height: 160px;
+  }
+
+  .logoStrip {
+    width: 1920px;
+  }
 }

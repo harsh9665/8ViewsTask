@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import logo from '@/constants/logo.png';
 import styles from '@/styles/Navbar.module.css';
 import { useState, useEffect, useRef } from 'react';
@@ -47,7 +48,7 @@ export default function Navbar() {
       <div className={styles.inner}>
 
         {/* LOGO — 155×45px, left: 250px */}
-        <a href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo}>
           <Image
             src={logo}
             alt="E-INFRA"
@@ -56,14 +57,14 @@ export default function Navbar() {
             style={{ objectFit: 'contain' }}
             priority
           />
-        </a>
+        </Link>
 
         {/* RIGHT: links + hamburger */}
         <div className={styles.right}>
 
           {/* Nav links — Inter 500 20px, gap 36px */}
           <ul className={styles.navLinks}>
-            <li><a href="#OurProjects">PROJECTS</a></li>
+            <li><a href="#our-projects">PROJECTS</a></li>
             <li><a href="#gallery">GALLERY</a></li>
             <li><a href="#contact">CONTACT US</a></li>
           </ul>
@@ -86,7 +87,7 @@ export default function Navbar() {
       {menuOpen && (
         <div className={styles.mobileMenu}>
           <ul>
-            <li><a href="#OurProjects" onClick={() => setMenuOpen(false)}>PROJECTS</a></li>
+            <li><a href="#our-projects" onClick={() => setMenuOpen(false)}>PROJECTS</a></li>
             <li><a href="#gallery" onClick={() => setMenuOpen(false)}>GALLERY</a></li>
             <li><a href="#contact" onClick={() => setMenuOpen(false)}>CONTACT US</a></li>
           </ul>
