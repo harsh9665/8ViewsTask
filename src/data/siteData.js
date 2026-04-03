@@ -150,3 +150,15 @@ export const clientReviews = [
     author: 'Anjali Sharma, Villa Owner',
   },
 ];
+
+export const footerNavLinks = [
+  { label: 'ABOUT US', href: '#about' },
+  { label: 'PROJECTS', href: '#our-projects' },
+  { label: 'CONTACT US', href: '#contact' },
+  { label: 'SERVICES', href: '#our-services' },
+];
+
+export const footerSocialLinks = [
+  { label: 'Instagram', href: 'https://www.instagram.com/' },
+  { label: 'Linkedin', href: 'https://www.linkedin.com/' },
+];

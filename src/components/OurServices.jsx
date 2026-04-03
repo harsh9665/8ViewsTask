@@ -9,7 +9,7 @@ export default function OurServices() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section className={styles.section}>
+    <section id="our-services" className={styles.section}>
       <div className={styles.container + ' container'}>
 
       {/* ── Title ── */}

@@ -24,7 +24,7 @@ export default function OurProjects() {
   };
 
   return (
-    <section id="OurProjects" className={styles.section}>
+    <section id="our-projects" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.leftCol}>
           <div className={styles.textGroup}>
@@ -37,7 +37,7 @@ export default function OurProjects() {
             </p>
           </div>
 
-          <Button variant="outlineGold" size="md" href="#OurProjects">
+          <Button variant="outlineGold" size="md" href="#our-projects">
             VIEW ALL
           </Button>
         </div>

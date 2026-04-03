@@ -1,191 +1,177 @@
 .section {
   width: 100%;
-  background-color: #f8f8f8;
   box-sizing: border-box;
-  padding: 80px 0;
+  padding: 72px 24px;
+  background: #f9f9f9;
 }
 
-/* ── Inner container ── */
 .inner {
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 48px;
+  gap: 40px;
 }
 
-/* ── Header row ── */
 .header {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 500;
-  font-size: 48px;
-  color: #212121;
   margin: 0;
-  line-height: 1.1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.08;
+  color: #212121;
 }
 
 .viewAll {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
+  width: 160px;
+  height: 56px;
+  border: 1px solid #dcbc82;
+  background: #f9f9f9;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #C9A84C;
-  background: transparent;
-  border: 1px solid #C9A84C;
-  padding: 12px 24px;
-  cursor: pointer;
+  line-height: 24px;
+  color: #c78800;
   text-transform: uppercase;
+  cursor: pointer;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .viewAll:hover {
-  background-color: #C9A84C;
-  color: #fff;
+  background: #c78800;
+  color: #f9f9f9;
 }
 
-/* ── Cards row ── */
 .cardsRow {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
 }
 
-/* ── Single card ── */
 .card {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  cursor: pointer;
 }
 
-/* ── Image wrapper ── */
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 460 / 320;
   overflow: hidden;
 }
 
 .cardImage {
   object-fit: cover;
-  transition: transform 0.5s ease;
 }
 
-.card:hover .cardImage {
-  transform: scale(1.05);
-}
-
-/* ─────────────────────────────────────────
-   OVERLAY — dark bg + logo, left-to-right reveal
-───────────────────────────────────────── */
-
-/* Dark overlay base — clips from left */
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(20, 20, 20, 0.78);
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-
-  /* Clip: hidden (width 0) → visible (width 100%) */
+  background: rgba(33, 33, 33, 0.5);
   clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: clip-path 500ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.overlayLogo {
+  width: 155px;
+  height: 45px;
+  object-fit: contain;
 }
 
 .card:hover .overlay {
-  clip-path: inset(0 0% 0 0); /* fully revealed */
+  clip-path: inset(0 0 0 0);
 }
 
-/* Logo inside overlay */
-.overlayLogo {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
-}
-
-.card:hover .overlayLogo {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.logoIcon {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: #C9A84C;
-  line-height: 1;
-}
-
-.logoText {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1;
-}
-
-/* ── Card text ── */
 .cardMeta {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 .projectDate {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: #888888;
-  letter-spacing: 0.04em;
+  margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19px;
+  color: rgba(33, 33, 33, 0.5);
 }
 
 .cardTitle {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  color: #212121;
   margin: 0;
-  line-height: 1.4;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #212121;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1280px) {
+@media (min-width: 768px) {
   .section {
-    padding: 80px 80px;
+    padding: 96px 48px;
   }
+
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .title {
-    font-size: 36px;
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .cardsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 20px;
+  }
+
+  .projectDate {
+    font-size: 16px;
+  }
+
+  .cardTitle {
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1280px) {
   .section {
-    padding: 60px 48px;
+    min-height: 792px;
+    padding: 120px 24px;
   }
-  .cardsRow {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 640px) {
-  .section {
-    padding: 48px 24px;
+  .inner {
+    gap: 48px;
   }
-  .cardsRow {
-    grid-template-columns: 1fr;
-  }
+
   .title {
-    font-size: 28px;
+    font-size: 64px;
+    line-height: 81px;
+  }
+
+  .cardsRow {
+    grid-template-columns: repeat(3, minmax(0, 460px));
+    justify-content: space-between;
+    gap: 20px;
   }
 }
