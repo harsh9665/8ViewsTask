@@ -2,107 +2,184 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
   overflow: hidden;
-  border-top: 1px solid #EAD6AA;
-  display: flex;
-  align-items: center;
+  border-top: 1px solid #ead6aa;
 }
 
-/* Background image */
 .bg {
   object-fit: cover;
   object-position: center;
 }
 
-/* Dark overlay */
 .overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-/* Gold top border line */
-.topBorder {
+.contentWrap {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: #EAD6AA;
+  inset: 0;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 48px 24px;
+  box-sizing: border-box;
 }
 
-/* Text content — bottom left */
 .content {
-  z-index: 3;
-  padding: 0 120px 80px 120px;
+  width: min(100%, 600px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 640px;
+  align-items: flex-start;
+  gap: 32px;
 }
 
-/* "FEATURED PROJECT-01" */
+.copyGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .label {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  color: #C9A84C;
+  line-height: 18px;
+  color: #dcbc82;
   text-transform: uppercase;
 }
 
-/* "LACASA VILLA" */
+.projectInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.textBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 72px;
-  font-weight: 700;
-  line-height: 1;
-  color: #ffffff;
+  width: 100%;
   margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 50px;
+  color: #f9f9f9;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
 }
 
-/* Description */
 .description {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-  max-width: 480px;
+  line-height: 18px;
+  color: #f9f9f9;
 }
 
-/* Tags row */
 .tags {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .content {
-    padding: 0 60px 60px 60px;
-  }
-  .title {
-    font-size: 52px;
-  }
+.viewButton {
+  width: 160px;
+  height: 50px;
+  padding: 16px;
+  border: 1px solid #f9f9f9;
+  background: rgba(33, 33, 33, 0.3);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0;
 }
 
-@media (max-width: 640px) {
-  .content {
-    padding: 0 24px 48px 24px;
-    max-width: 100%;
+@media (min-width: 768px) {
+  .contentWrap {
+    padding: 80px 48px;
   }
+
+  .label {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
   .title {
-    font-size: 36px;
+    font-size: 64px;
+    line-height: 81px;
   }
+
   .description {
-    font-size: 13px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .tags {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .slide {
+    height: 960px;
+  }
+
+  .contentWrap {
+    padding: 0;
+  }
+
+  .content {
+    position: absolute;
+    left: 250px;
+    top: 341px;
+    width: 600px;
+  }
+
+  .copyGroup {
+    width: 600px;
+  }
+
+  .label {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .projectInfo {
+    width: 600px;
+  }
+
+  .textBlock {
+    width: 600px;
+  }
+
+  .title {
+    width: max-content;
+    max-width: 900px;
+    font-size: 80px;
+    line-height: 101px;
+    white-space: nowrap;
+  }
+
+  .description {
+    width: 600px;
+  }
+
+  .tags {
+    width: 359px;
   }
 }

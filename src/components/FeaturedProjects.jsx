@@ -4,7 +4,10 @@ import styles from '@/styles/FeaturedProjects.module.css';
 
 export default function FeaturedProjects({ onViewProject }) {
     return (
-        <section className={styles.section}>
+        <section
+            className={styles.section}
+            style={{ '--slide-count': featuredProjects.length }}
+        >
             {featuredProjects.map((project, idx) => (
                 <ProjectSlide
                     key={project.id}

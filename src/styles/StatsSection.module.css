@@ -1,53 +1,78 @@
 .section {
   width: 100%;
-  background-color: #212121;
+  padding: 64px 24px;
+  background: #212121;
   border-bottom: 1px solid #949494;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-sizing: border-box;
-  padding: 155px 0;
 }
 
 .inner {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 220px;
-  justify-content: center;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+  gap: 48px 32px;
 }
 
 .statItem {
+  width: min(100%, 260px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .number {
+  width: 100%;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 80px;
-  font-weight: 300;
-  color: #ffffff;
-  line-height: 1;
+  font-size: clamp(56px, 6vw, 80px);
+  font-weight: 500;
+  line-height: 100%;
+  color: #f9f9f9;
+  text-align: center;
 }
 
 .label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 16px;
+  width: 100%;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: clamp(16px, 1.75vw, 24px);
   font-weight: 400;
-  color: #C9A84C;
-  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: #dcbc82;
+  text-align: center;
 }
 
-@media (max-width: 1024px) {
-  .inner { gap: 80px; }
-  .number { font-size: 56px; }
+@media (min-width: 768px) {
+  .section {
+    padding: 96px 48px;
+  }
+
+  .statItem {
+    gap: 19px;
+  }
 }
 
-@media (max-width: 640px) {
-  .section { height: auto; padding: 60px 24px; }
-  .inner { flex-direction: column; gap: 40px; }
-  .number { font-size: 48px; }
+@media (min-width: 1280px) {
+  .section {
+    min-height: 460px;
+    padding: 96px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inner {
+    width: min(1220px, calc(100% - 96px));
+    max-width: 1220px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: center;
+    column-gap: clamp(48px, 8vw, 220px);
+  }
+
+  .statItem {
+    width: 100%;
+    max-width: 260px;
+  }
 }

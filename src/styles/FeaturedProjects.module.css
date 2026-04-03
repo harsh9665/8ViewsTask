@@ -1,25 +1,11 @@
-/* 
-  The section height = 100vh × number of slides
-  This gives enough scroll room for each slide to 
-  stick and get pushed off by the next one 
-*/
 .section {
   position: relative;
-  height: 300vh; /* 3 slides × 100vh */
   width: 100%;
+  height: calc(var(--slide-count, 3) * max(100svh, 640px));
 }
 
-/*
-  Each ProjectSlide inside has:
-    position: sticky
-    top: 0
-    height: 100vh
-  
-  As user scrolls:
-  - Slide 1 sticks at top
-  - Slide 2 (higher z-index) slides up over it
-  - Slide 3 slides up over slide 2
-  
-  This creates the natural stacking scroll effect
-  shown in the Figma design.
-*/
+@media (min-width: 1280px) {
+  .section {
+    height: calc(var(--slide-count, 3) * 960px);
+  }
+}

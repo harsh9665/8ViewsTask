@@ -3,19 +3,6 @@ import Button from '@/components/Button';
 import Tag from '@/components/Tag';
 import styles from '@/styles/ProjectSlide.module.css';
 
-/**
- * ProjectSlide — Generic full-screen project panel
- *
- * Props:
- *  - label        {string}   e.g. "FEATURED PROJECTS-01"
- *  - title        {string}   e.g. "LACASA VILLA"
- *  - description  {string}
- *  - tags         {string[]} e.g. ["Hyderabad", "2025", "Residential"]
- *  - image        {string}   path to image in /public
- *  - overlayColor {string}   CSS rgba for dark overlay (default 60% black)
- *  - onView       {fn}       callback for VIEW button
- *  - index        {number}   z-index stacking order
- */
 export default function ProjectSlide({
   label,
   title,
@@ -27,11 +14,7 @@ export default function ProjectSlide({
   index = 0,
 }) {
   return (
-    <div
-      className={styles.slide}
-      style={{ zIndex: index }}
-    >
-      {/* Background image */}
+    <article className={styles.slide} style={{ zIndex: index }}>
       <Image
         src={image}
         alt={title}
@@ -41,37 +24,41 @@ export default function ProjectSlide({
         priority={index === 0}
       />
 
-      {/* Dark overlay */}
-      <div
-        className={styles.overlay}
-        style={{ backgroundColor: overlayColor }}
-      />
+      <div className={styles.overlay} style={{ backgroundColor: overlayColor }} />
 
-      {/* Gold top border */}
-      <div className={styles.topBorder} />
-
-      {/* Content */}
-      <div className='container z-3'>
+      <div className={styles.contentWrap}>
         <div className={styles.content}>
-<span className={styles.label}>{label}</span>
-        <h2 className={styles.title}>{title}</h2>
-        <p className={styles.description}>{description}</p>
+          <div className={styles.copyGroup}>
+            <span className={styles.label}>{label}</span>
 
-        {/* Tags row */}
-        {tags.length > 0 && (
-          <div className={styles.tags}>
-            {tags.map((tag) => (
-              <Tag key={tag} variant="dark">{tag}</Tag>
-            ))}
+            <div className={styles.projectInfo}>
+              <div className={styles.textBlock}>
+                <h2 className={styles.title}>{title}</h2>
+                <p className={styles.description}>{description}</p>
+              </div>
+
+              {tags.length > 0 && (
+                <div className={styles.tags}>
+                  {tags.map((tag) => (
+                    <Tag key={tag} variant="dark">
+                      {tag}
+                    </Tag>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        )}
 
-        <Button variant="outline" size="md" onClick={onView}>
-          VIEW
-        </Button>
+          <Button
+            variant="outline"
+            size="md"
+            onClick={onView}
+            className={styles.viewButton}
+          >
+            VIEW
+          </Button>
         </div>
-        
       </div>
-    </div>
+    </article>
   );
 }
