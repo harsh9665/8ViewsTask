@@ -2,203 +2,184 @@
   position: relative;
   z-index: 30;
   width: 100%;
-  background-color: #FFF8EF;
-  padding: 80px 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 56px;
+  gap: 40px;
+  padding: 72px 0;
+  background: #fff8ef;
 }
 
-/* ── Title ── */
 .title {
+  width: min(100%, calc(100vw - 48px));
+  margin: 0;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 36px;
   font-weight: 500;
-  font-size: 64px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 1.08;
   color: #212121;
   text-align: center;
-  margin: 0;
+}
+
+.reviewsViewport {
   width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* ── Carousel wrapper (arrows + track) ── */
-.carouselWrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.reviewsViewport::-webkit-scrollbar {
+  display: none;
 }
 
-/* ── Track outer — clips overflow ── */
-.trackOuter {
-  flex: 1;
-  overflow: hidden;
-}
-
-/* ── Track — slides horizontally ── */
-.track {
-  display: flex;
-  gap: 24px;
-  transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
-  will-change: transform;
-}
-
-/* ── Single card ── */
-.card {
-  /* Each card = 50% of track minus half the gap */
-  flex: 0 0 calc(50% - 12px);
-  min-height: 420px;
-  background-color: #F9F9F9;
-  border: 1px solid #EAD6AA;
-  padding: 80px;
+.reviewsTrack {
+  width: max-content;
   box-sizing: border-box;
   display: flex;
+  gap: 20px;
+  padding: 0 24px;
+}
+
+.card {
+  width: min(86vw, 420px);
+  min-height: 360px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: flex;
   flex-direction: column;
-  gap: 40px;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 40px 32px;
+  background: #f9f9f9;
+  border: 1px solid #ead6aa;
+  scroll-snap-align: center;
 }
 
-/* Project name */
 .project {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #C9A84C;
-  text-transform: none;
+  line-height: 22px;
+  color: #c78800;
 }
 
-/* Review text */
+.reviewGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
 .review {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   color: #212121;
-  margin: 0;
-  flex: 1;
 }
 
-/* Author */
 .author {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #888888;
+  width: 100%;
   margin: 0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 22px;
+  color: #949494;
 }
 
-/* ── Arrows ── */
-.arrow {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: transparent;
-  border: 1px solid #C9A84C;
-  color: #C9A84C;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.arrow:hover:not(.arrowDisabled) {
-  background-color: #C9A84C;
-  color: #fff;
-}
-
-.arrowDisabled {
-  opacity: 0.3;
-  cursor: default;
-  pointer-events: none;
-}
-
-/* ── Dots ── */
-.dots {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #D9D9D9;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.dotActive {
-  background-color: #C9A84C;
-  transform: scale(1.3);
-}
-
-/* ── View All button ── */
 .viewAll {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 12px;
+  width: 160px;
+  height: 56px;
+  border: 1px solid #c78800;
+  background: #f9f9f9;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #C9A84C;
-  background: transparent;
-  border: 1px solid #C9A84C;
-  padding: 14px 32px;
-  cursor: pointer;
+  line-height: 24px;
+  color: #c78800;
   text-transform: uppercase;
+  cursor: pointer;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .viewAll:hover {
-  background-color: #C9A84C;
-  color: #fff;
+  background: #c78800;
+  color: #f9f9f9;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1280px) {
+@media (min-width: 768px) {
   .section {
-    padding: 80px 80px;
+    gap: 48px;
+    padding: 96px 0;
   }
+
   .title {
     font-size: 48px;
+    line-height: 1;
   }
-  .card {
-    padding: 48px;
-  }
-}
 
-@media (max-width: 1024px) {
-  .section {
-    padding: 60px 48px;
+  .reviewsTrack {
+    padding: 0 48px;
   }
-  /* Show 1 card on tablets */
-  .card {
-    flex: 0 0 100%;
-    min-height: auto;
-  }
-  .track {
-    /* Override translateX calculation for 1 card */
-    transition: transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
-  }
-}
 
-@media (max-width: 640px) {
-  .section {
-    padding: 48px 24px;
+  .card {
+    width: 640px;
+    min-height: 390px;
+    gap: 40px;
+    padding: 56px;
+  }
+
+  .reviewGroup {
     gap: 32px;
   }
-  .title {
-    font-size: 32px;
-  }
-  .card {
-    padding: 32px 24px;
-    gap: 24px;
-  }
+
   .review {
-    font-size: 15px;
+    font-size: 22px;
+  }
+
+  .author {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    min-height: 909px;
+    gap: 56px;
+    padding: 120px 0;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 64px;
+    line-height: 81px;
+  }
+
+  .reviewsTrack {
+    padding: 0;
+  }
+
+  .card {
+    width: 940px;
+    min-height: 420px;
+    padding: 80px;
+  }
+
+  .project {
+    font-size: 18px;
+  }
+
+  .review {
+    font-size: 24px;
   }
 }
