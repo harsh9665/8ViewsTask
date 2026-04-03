@@ -26,10 +26,12 @@ export default function AboutUs() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.inner + ' container'}>
+      <div className={styles.inner}>
 
         {/* ── Left — Text content ── */}
         <div className={styles.leftCol}>
+
+          <div className={styles.FirstColGroup}>
           <h2 className={styles.title}>About us</h2>
           <p className={styles.description}>
             E-Infra is a premier real estate developer in Hyderabad, with over 20
@@ -39,6 +41,7 @@ export default function AboutUs() {
             spaces that enhance lifestyles, offering modern designs and world-class
             amenities.
           </p>
+          </div>
           <Button variant="outlineGold" size="md" href="#about">
             KNOW MORE
           </Button>

@@ -35,15 +35,6 @@ font-family: var(--font-inter), 'Inter', sans-serif;/* added */
   color: #ffffff;
 }
 
-.outlineGold {
-  background: transparent;
-  border: 1px solid #C9A84C;
-  color: #C9A84C;
-}
-.outlineGold:hover {
-  background: #C9A84C;
-  color: #ffffff;
-}
 
 .solid {
   background: #C9A84C;
@@ -53,6 +44,27 @@ font-family: var(--font-inter), 'Inter', sans-serif;/* added */
 .solid:hover {
   background: #a87200;
   border-color: #a87200;
+}
+
+
+/* About Us button */
+.outlineGold {
+  width: 160px;
+  height: 50px;
+  border: 1px solid #c78800;
+  color: #c78800;
+  background: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  padding: 16px;
+}
+
+.outlineGold:hover {
+  background-color: #c78800;
+  color: #ffffff;
 }
 
 /* added — white filled button for Hero section*/
